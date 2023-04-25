@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier un pokémon{% endblock %}
+
+{% block body %}
+
+
+    <h3>Modifier un Pokémon</h3>
+    {{ form_start(modifPoke, {'attr': {'novalidate': 'novalidate'}}) }}
+    {{ form_errors(modifPoke) }}
+    {{ form_widget(modifPoke) }}
+    {{ form_end(modifPoke) }}
+
+
+
+{% endblock %}
+

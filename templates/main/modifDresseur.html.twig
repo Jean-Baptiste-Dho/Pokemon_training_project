@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier un dresseur{% endblock %}
+
+{% block body %}
+
+
+    <h3>Modifier un Dresseur</h3>
+    {{ form_start(modifDresseur, {'attr': {'novalidate': 'novalidate'}}) }}
+    {{ form_errors(modifDresseur) }}
+    {{ form_widget(modifDresseur) }}
+    {{ form_end(modifDresseur) }}
+
+
+{% endblock %}
+

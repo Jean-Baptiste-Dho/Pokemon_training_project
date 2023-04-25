@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {{ dump(generation) }}
+    {% for i in 0..150 %}
+<p>Pokémon num°{{ i+1 }} : {{ generation.pokemon_species[i].url }}</p>
+    {% endfor %}
+
+
+{% endblock %}
+
+

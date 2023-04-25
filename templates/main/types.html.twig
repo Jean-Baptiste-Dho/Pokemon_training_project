@@ -1,0 +1,15 @@
+{% block title %}
+    <div>
+
+<h3>Liste des types :</h3>
+        <ul>
+            {% for pokemonSpecie in user.pokemonSpecies %}
+                <li>{{ pokemonSpecie.type }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    {% endfor %}
+
+
+{% endblock %}

@@ -1,0 +1,11 @@
+<div>
+    <h1>{{ dresseurs.dresseurname }}</h1>
+    <ul>
+        {% for pokemonSpecie in dresseurs.pokemonSpecies %}
+            <li>{{ pokemonSpecie.name }} - {{ pokemonSpecie.type }}</li>
+        {% endfor %}
+    </ul>
+
+    {% include 'navLinks/links.html.twig' %}
+
+</div>

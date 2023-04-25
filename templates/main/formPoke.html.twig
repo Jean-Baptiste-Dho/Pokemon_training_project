@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajout d'un pokémon{% endblock %}
+
+{% block body %}
+
+    <h3>Ajouter un pokemon</h3>
+    {{ form_start(formPoke, {'attr': {'novalidate': 'novalidate'}}) }}
+    {{ form_errors(formPoke) }}
+    {{ form_widget(formPoke) }}
+    {{ form_end(formPoke) }}
+
+
+
+{% endblock %}

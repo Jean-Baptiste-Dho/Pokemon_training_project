@@ -1,0 +1,82 @@
+Historique des logs d'ajout de pokemon :
+Pokémon saisie : Staros - Type :Eau
+Pokémon saisie : Grolem - Type : Roche
+Pokémon saisie : Gravalanche - Type : Roche
+Pokémon saisie : Carabaffe - Type : Eau
+Pokémon saisie : tentacouille - Type : rien
+Dresseur saisie : Olivier Atton - Password : TirDeLAigle!
+Dresseur saisie : Sacha - Password : Pikachu4Ever
+Dresseur saisie : Sangoku - Password : Kamehameha!
+Pokémon saisie : Vulvizzar - Type : Plante
+Pokemon saisie : Akwakwak - Type : Eau
+Dresseur saisie : Jacques Chirac - Password : JaimeLesCanardsVivants
+Dresseur saisie : test - Password : test
+Pokemon saisie : test - Type : test
+Pokemon saisie : test - Type : test
+Pokemon supprimé : test - Type : test
+Pokemon supprimé : test - Type : test
+Pokemon saisie : Canarticho - Type : Neutre
+Pokemon supprimé : Canarticho - Type : Neutre
+Dresseur supprimé : test - Password : test
+Dresseur saisie : testSuppression - Password : test
+Pokemon supprimé : Racailloux - Type : Roche
+Pokemon supprimé : Akwakwak - Type : Eau
+Pokemon saisie : Racaillou - Type : Roche
+Pokemon saisie : testpoke - Type : test
+Pokemon saisie : testpoke2 - Type : test2
+Pokemon saisie : testpoke3 - Type : test3
+Dresseur supprimé : testSuppression - Password : test
+Dresseur saisie : test - Password : test
+Pokemon saisie : test2 - Type : test2
+Pokemon saisie : test3 - Type : test3
+Dresseur supprimé : test - Password : testAinsi que tous ses pokémons
+Dresseur supprimé : Jacques Chirac - Password : JaimeLesCanardsVivants (Ainsi que tous ses pokémons)
+Dresseur supprimé : Sangoku - Password : Kamehameha! ! Ainsi que tous ses pokémons !
+Dresseur supprimé : Sacha - Password : Pikachu4Ever -!! Tous les pokémons liés à ce dresseur ont également été supprimé -
+Pokemon supprimé : Vulvizzar - Type : Plante
+Dresseur saisie : Jeanne - Password : Serge<3
+Pokemon saisie : Vulvizzar - Type : Plante
+Dresseur supprimé : Olivier Atton - Password : TirDeLAigle! -!! Tous les pokémons liés à ce dresseur ont également été supprimé -
+Dresseur saisie : Olivier Atton - Password : TirDeLAigle!
+Pokemon saisie : BallonDeFoot - Type : Ballon
+2023-04-20 09:59:04 Dresseur saisie : test - Password : test
+2023-04-20 09:59:26 Dresseur supprimé : test - Password : test -!! Tous les pokémons liés à ce dresseur ont également été supprimé -
+Pokemon supprimé : Carabaffe - Type : Eau
+2023-04-20 10:02:16 Dresseur saisie : test - Password : test
+2023-04-20 10:02:20 Dresseur supprimé : test - Password : test -!! Tous les pokémons liés à ce dresseur ont également été supprimé -
+Pokemon mis à jour : Pikachuuuuuuuuu - Type : Electrique
+Pokemon mis à jour : Bubizzarar - Type : Plante
+Pokemon mis à jour : Pikachu - Type : Electrique
+Pokemon mis à jour : Bulbizzar - Type : Plante
+Pokemon supprimé : Vulvizzar - Type : Plante
+Pokemon saisie : test - Type : Eau
+Pokemon mis à jour : tentacool - Type : Eau
+Pokemon mis à jour : Tentacool - Type : Eau
+Pokemon supprimé : test - Type : Eau
+Pokemon saisie : Pichu - Type : Electrique
+2023-04-20 14:30:57 Dresseur mis à jour : Sacha - Password : Pikachu4Ever!
+Pokemon saisie : test - Type : Plante
+Pokemon saisie : test3 - Type : test
+2023-04-20 15:55:34 Dresseur saisie : dresseur - Password : dresseur
+Pokemon saisie : test - Type : Plante
+Pokemon mis à jour : testrrrrrrrrrrrrrrr - Type : Plante
+Pokemon supprimé : testrrrrrrrrrrrrrrr - Type : Plante
+2023-04-20 16:01:19 Dresseur supprimé : dresseur - Password : dresseur -!! Tous les pokémons liés à ce dresseur ont également été supprimé -
+2023-04-20 16:02:07 Dresseur saisie : dresseur - Password : dresseur
+2023-04-20 16:02:14 Dresseur mis à jour : dresseurrrrrrrrrrrrrrrrrrr - Password : dresseur
+Pokemon saisie : test - Type : Plante
+2023-04-20 16:02:44 Dresseur supprimé : dresseurrrrrrrrrrrrrrrrrrr - Password : dresseur -!! Tous les pokémons liés à ce dresseur ont également été supprimé -
+2023-04-21 08:56:31Pokemon mis à jour : test33 - Type : test
+2023-04-21 12:58:36Pokemon mis à jour : pokétest - Type : pokémon - test
+2023-04-21 12:58:43Pokemon mis à jour : pokétest - Type : pokémon - test
+2023-04-21 13:01:21Pokemon supprimé : pokétest - Type : pokémon - test
+2023-04-21 13:03:39Pokemon saisie : Magmar - Type : Feu
+2023-04-21 13:36:56Pokemon supprimé : test - Type : Plante
+2023-04-21 13:37:30Pokemon saisie : reherheh - Type : rdhrdhrh
+2023-04-21 13:38:01Pokemon supprimé : reherheh - Type : rdhrdhrh
+2023-04-21 13:38:42Pokemon saisie : hereh - Type : tyktyk
+2023-04-21 15:07:15Pokemon saisie : jtjdj - Type : drjrdj
+2023-04-21 15:12:32 Dresseur saisie : gseseg - Password : segsegsegesg
+2023-04-21 15:24:10 Dresseur supprimé : gseseg - Password : segsegsegesg -!! Tous les pokémons liés à ce dresseur ont également été supprimé -
+2023-04-24 09:52:05Pokemon mis à jour : Tentacool - Type : Eau - rien
+2023-04-24 09:53:17 Dresseur saisie : test - Password : test
