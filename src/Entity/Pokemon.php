@@ -16,13 +16,22 @@ class Pokemon
     private ?int $id = null;
 
     #[ORM\Column(length: 150)]
-    private ?string $poke_name = null;
+    private ?string $name = null;
 
     #[ORM\Column]
-    private ?int $pokedex_id = null;
+    private ?int $pokedexId = null;
 
     #[ORM\OneToMany(mappedBy: 'pokemon', targetEntity: CapturedPokemon::class, orphanRemoval: true)]
     private Collection $pokemons;
+
+    #[ORM\Column(length: 255)]
+    private ?string $legendary = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $shape = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $color = null;
 
     public function __construct()
     {
@@ -34,26 +43,26 @@ class Pokemon
         return $this->id;
     }
 
-    public function getPokeName(): ?string
+    public function getName(): ?string
     {
-        return $this->poke_name;
+        return $this->name;
     }
 
-    public function setPokeName(string $poke_name): self
+    public function setName(string $name): self
     {
-        $this->poke_name = $poke_name;
+        $this->name = $name;
 
         return $this;
     }
 
     public function getPokedexId(): ?int
     {
-        return $this->pokedex_id;
+        return $this->pokedexId;
     }
 
-    public function setPokedexId(int $pokedex_id): self
+    public function setPokedexId(int $pokedexId): self
     {
-        $this->pokedex_id = $pokedex_id;
+        $this->pokedexId = $pokedexId;
 
         return $this;
     }
@@ -84,6 +93,42 @@ class Pokemon
                 $pokemon->setPokemon(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getLegendary(): ?string
+    {
+        return $this->legendary;
+    }
+
+    public function setLegendary(string $legendary): self
+    {
+        $this->legendary = $legendary;
+
+        return $this;
+    }
+
+    public function getShape(): ?string
+    {
+        return $this->shape;
+    }
+
+    public function setShape(string $shape): self
+    {
+        $this->shape = $shape;
+
+        return $this;
+    }
+
+    public function getColor(): ?string
+    {
+        return $this->color;
+    }
+
+    public function setColor(string $color): self
+    {
+        $this->color = $color;
 
         return $this;
     }

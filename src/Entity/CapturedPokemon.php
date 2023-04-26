@@ -24,6 +24,9 @@ class CapturedPokemon
     #[ORM\JoinColumn(nullable: false)]
     private ?Pokemon $pokemon = null;
 
+    #[ORM\Column]
+    private ?int $pokedexId = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -41,7 +44,7 @@ class CapturedPokemon
         return $this;
     }
 
-    public function getDresseur(): ?Dresseur
+    public function getDresseur(): string
     {
         return $this->dresseur;
     }
@@ -61,6 +64,18 @@ class CapturedPokemon
     public function setPokemon(?Pokemon $pokemon): self
     {
         $this->pokemon = $pokemon;
+
+        return $this;
+    }
+
+    public function getPokedexId(): ?int
+    {
+        return $this->pokedexId;
+    }
+
+    public function setPokedexId(int $pokedexId): self
+    {
+        $this->pokedexId = $pokedexId;
 
         return $this;
     }
