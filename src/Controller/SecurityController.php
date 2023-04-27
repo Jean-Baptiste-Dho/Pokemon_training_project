@@ -15,6 +15,8 @@ class SecurityController extends AbstractController
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
         if ($this->getUser()) {
+
+            //TODO gérer la vérification d'un dresseur et si non, redirection vers le form de  création
 //            $id = $this->getUser()->getDresseurId();
 //            dd($id);
 //            if (!$id) {

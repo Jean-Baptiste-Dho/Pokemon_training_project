@@ -85,7 +85,6 @@ class FillDataBaseCommand extends Command
         }
 
         $progressBar->finish();
-//            dump($pokemon);
         $em->flush();
         $io->success('You have fill your database with Pokemon.');
 
