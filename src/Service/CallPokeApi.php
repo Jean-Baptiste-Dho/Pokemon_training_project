@@ -7,17 +7,20 @@ use function Webmozart\Assert\Tests\StaticAnalysis\length;
 
 class CallPokeApi
 {
+    const BASE_URL = 'https://pokeapi.co/api/v2/';
 
     public function __construct(
         private HttpClientInterface $client,
-    ) {
+    )
+    {
     }
 
     public function getGen($id): array
     {
+        $this->client->request('GET', self::BASE_URL . 'generation/');
         $response = $this->client->request(
             'GET',
-            'https://pokeapi.co/api/v2/generation/'.$id
+            self::BASE_URL . 'generation/' . $id
         );
 
         return $response->toArray();

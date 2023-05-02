@@ -3,11 +3,14 @@
 {% block title %}Ajout d'un dresseur{% endblock %}
 
 {% block body %}
-    <h3>Ajouter un Dresseur</h3>
-    {{ form_start(formDresseur, {'attr': {'novalidate': 'novalidate'}}) }}
-    {{ form_errors(formDresseur) }}
-    {{ form_widget(formDresseur) }}
-    {{ form_end(formDresseur) }}
+
+    <h3>Merci de créer un dresseur pour pour capturer des pokémons.</h3>
+
+    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+    {{ form_row(form.name) }}
+    {{ form_row(form.email) }}
+    {{ form_row(form.password) }}
+    {{ form_end(form) }}
 
 
 

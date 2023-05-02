@@ -1,11 +1,33 @@
-<div>
-    <h1>{{ dresseurs.dresseurname }}</h1>
-    <ul>
-        {% for pokemonSpecie in dresseurs.pokemonSpecies %}
-            <li>{{ pokemonSpecie.name }} - {{ pokemonSpecie.type }}</li>
-        {% endfor %}
-    </ul>
+{% extends 'base.html.twig' %}
 
-    {% include 'navLinks/links.html.twig' %}
+{% block title %}Dresseur : {{ dresseur.name }}{% endblock %}
 
-</div>
+{% block body %}
+    <div>
+
+        <h1>{{ dresseur.name }}</h1>
+        <div class="team">
+            {% for pokemon in dresseur.pokemons %}
+                {% include 'pokemon/card.html.twig' with {pokemon: pokemon} %}
+            {% endfor %}
+        </div>
+
+        {% if not dresseur %}
+            <h3>Merci de créer un dresseur pour pour capturer des pokémons.</h3>
+
+            {% include 'main/formDresseur.html.twig' %}
+
+            {#        {% else %} #}
+            {#            <h3>Vous avez déjà créer un dresseur.</h3> #}
+            {#            <p> Voici les actions possibles</p> #}
+            {#            <ul> #}
+            {#                <li> Modifier ou supprimer votre dresseur</li> #}
+            {#                <li> Capturer des pokémons</li> #}
+            {#                <li> Modifier ou supprimer des pokémons</li> #}
+            {#            </ul> #}
+        {% endif %}
+
+    </div>
+
+{% endblock %}
+

@@ -12,7 +12,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 class UserVoter extends Voter
 {
 
-    public const DELETE = 'dresseur_delete';
+    public const DELETE = 'delete';
     private AuthorizationCheckerInterface $authorizationChecker;
 
     public function __construct(AuthorizationCheckerInterface $authorizationChecker)
@@ -48,8 +48,9 @@ class UserVoter extends Voter
         return false;
     }
 
-    private function canDelete(Dresseur $subject, UserInterface $user){
-        $now=time();
+    private function canDelete(Dresseur $subject, UserInterface $user)
+    {
+        $now = time();
         $isEven = $now % 2 === 0;
         $isAdmin = $this->authorizationChecker->isGranted('ROLE_ADMIN');
 

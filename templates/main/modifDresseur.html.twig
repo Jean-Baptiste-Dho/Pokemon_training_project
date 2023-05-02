@@ -6,11 +6,12 @@
 
 
     <h3>Modifier un Dresseur</h3>
-    {{ form_start(modifDresseur, {'attr': {'novalidate': 'novalidate'}}) }}
-    {{ form_errors(modifDresseur) }}
-    {{ form_widget(modifDresseur) }}
-    {{ form_end(modifDresseur) }}
 
+    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+    {{ form_row(form.name) }}
+    {#    {{ form_row(form.email) }} #}
+    {{ form_row(form.password, {'attr': {'class': 'form'}}) }}
+    {{ form_end(form) }}
 
 {% endblock %}
 

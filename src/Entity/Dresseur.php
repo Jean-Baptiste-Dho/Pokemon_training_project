@@ -3,16 +3,18 @@
 namespace App\Entity;
 
 use App\Interface\InstanceInterface;
-use App\Interface\Timestampable;
 use App\Repository\DresseurRepository;
+use App\Trait\Timestampable;
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: DresseurRepository::class)]
 #[ORM\Table(name: '`dresseur`')]
-class Dresseur implements InstanceInterface
+class Dresseur implements InstanceInterface, UserInterface, PasswordAuthenticatedUserInterface
 {
     use Timestampable;
 
@@ -22,29 +24,31 @@ class Dresseur implements InstanceInterface
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $dresseurname = null;
+    private ?string $name = null;
+
+    #[ORM\Column(length: 180, unique: true)]
+    private ?string $email = null;
 
     #[ORM\Column(length: 255)]
     private ?string $password = null;
 
-    #[ORM\OneToMany(mappedBy: 'dresseur', targetEntity: PokemonSpecie::class)]
-    private Collection $pokemonSpecies;
-
     #[ORM\OneToMany(mappedBy: 'dresseur', targetEntity: CapturedPokemon::class, orphanRemoval: true)]
     private Collection $pokemons;
 
-    public function __toString(): string
-    {
-        return $this->dresseurname;
-    }
+    #[ORM\Column]
+    private array $roles = [];
 
     public function __construct()
     {
-        $this->pokemonSpecies = new ArrayCollection();
         $this->createdAt = new DateTime();
         $this->updatedAt = new DateTime();
         $this->capturedPokemon = new ArrayCollection();
         $this->pokemons = new ArrayCollection();
+    }
+
+    public function __toString(): string
+    {
+        return $this->name;
     }
 
     public function getId(): ?int
@@ -52,15 +56,33 @@ class Dresseur implements InstanceInterface
         return $this->id;
     }
 
-    public function getDresseurname(): ?string
+    public function getName(): ?string
     {
-        return $this->dresseurname;
+        return $this->name;
     }
 
-    public function setDresseurname(string $dresseurname): self
+    public function setName(string $name): self
     {
-        $this->dresseurname = $dresseurname;
+        $this->name = $name;
 
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param string|null $email
+     * @return Dresseur
+     */
+    public function setEmail(?string $email): Dresseur
+    {
+        $this->email = $email;
         return $this;
     }
 
@@ -75,37 +97,6 @@ class Dresseur implements InstanceInterface
 
         return $this;
     }
-
-    /**
-     * @return Collection<int, PokemonSpecie>
-     */
-    public function getPokemonSpecies(): Collection
-    {
-        return $this->pokemonSpecies;
-    }
-
-    public function addPokemonSpecies(PokemonSpecie $pokemonSpecies): self
-    {
-        if (!$this->pokemonSpecies->contains($pokemonSpecies)) {
-            $this->pokemonSpecies->add($pokemonSpecies);
-            $pokemonSpecies->setDresseurId($this);
-        }
-
-        return $this;
-    }
-
-    public function removePokemonSpecies(PokemonSpecie $pokemonSpecies): self
-    {
-        if ($this->pokemonSpecies->removeElement($pokemonSpecies)) {
-            // set the owning side to null (unless already changed)
-            if ($pokemonSpecies->getDresseurId() === $this) {
-                $pokemonSpecies->setDresseurId(null);
-            }
-        }
-
-        return $this;
-    }
-
 
     /**
      * @return Collection<int, CapturedPokemon>
@@ -146,11 +137,49 @@ class Dresseur implements InstanceInterface
         $date_formatted = $date->format('Y-m-d H:i:s');
 
         return match ($action) {
-            "persist" => $date_formatted . " Dresseur saisie : " . $this->dresseurname . " - Password : " . $this->password . "\n",
-            "update" => $date_formatted . " Dresseur mis à jour : " . $this->dresseurname . " - Password : " . $this->password . "\n",
-            "remove" => $date_formatted . " Dresseur supprimé : " . $this->dresseurname . " - Password : " . $this->password . " -!! Tous les pokémons liés à ce dresseur ont également été supprimé-\n",
+            "persist" => $date_formatted . " Dresseur saisie : " . $this->name . " - Password : " . $this->password . "\n",
+            "update" => $date_formatted . " Dresseur mis à jour : " . $this->name . " - Password : " . $this->password . "\n",
+            "remove" => $date_formatted . " Dresseur supprimé : " . $this->name . " - Password : " . $this->password . " -!! Tous les pokémons liés à ce dresseur ont également été supprimé-\n",
             default => "",
         };
+    }
+
+    /**
+     * A visual identifier that represents this user.
+     *
+     * @see UserInterface
+     */
+    public function getUserIdentifier(): string
+    {
+        return (string)$this->email;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getRoles(): array
+    {
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
+    }
+
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function eraseCredentials()
+    {
+        // If you store any temporary, sensitive data on the user, clear it here
+        // $this->plainPassword = null;
     }
 }
 

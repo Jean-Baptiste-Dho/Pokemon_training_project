@@ -1,0 +1,190 @@
+body {
+    height: 100vh;
+    background-image: url('/img/bg.webp');
+    background-position: bottom right;
+    background-repeat: no-repeat;
+    box-sizing: border-box;
+    background-color: #fce7b7;
+}
+
+.pokemon-card {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 10%;
+}
+
+.pokemon-card-green {
+    background-color: forestgreen;
+}
+
+.border-green {
+    border: solid 3px forestgreen;
+    background-color: white;
+    padding: 3px;
+}
+
+.pokemon-card-blue {
+    background-color: dodgerblue;
+}
+
+.border-blue {
+    border: solid 3px dodgerblue;
+    background-color: white;
+    padding: 3px;
+}
+
+.pokemon-card-brown {
+    background-color: sandybrown;
+}
+
+.border-brown {
+    border: solid 3px sandybrown;
+    background-color: white;
+    padding: 3px;
+}
+
+.pokemon-card-gray {
+    background-color: darkgrey;
+}
+
+.border-gray {
+    border: solid 3px darkgrey;
+    background-color: white;
+    padding: 3px;
+}
+
+.pokemon-card-pink {
+    background-color: lightpink;
+}
+
+.border-pink {
+    border: solid 3px lightpink;
+    background-color: white;
+    padding: 3px;
+}
+
+.pokemon-card-purple {
+    background-color: mediumpurple;
+}
+
+.border-purple {
+    border: solid 3px mediumpurple;
+    background-color: white;
+    padding: 3px;
+}
+
+.pokemon-card-red {
+    background-color: darkred;
+}
+
+.border-red {
+    border: solid 3px darkred;
+    background-color: white;
+    padding: 3px;
+}
+
+.pokemon-card-yellow {
+    background-color: yellow;
+}
+
+.border-yellow {
+    border: solid 3px yellow;
+    background-color: white;
+    padding: 3px;
+}
+
+.pokemon-card-white {
+    background-color: lightgrey;
+}
+
+.border-white {
+    border: solid 3px lightgrey;
+    background-color: white;
+    padding: 3px;
+}
+
+.pokemon-card-black {
+    background-color: slategrey;
+}
+
+.border-black {
+    border: solid 3px slategrey;
+    background-color: white;
+    padding: 3px;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    background-color: lightyellow;
+    text-decoration: none;
+    padding-inline: 3em;
+}
+
+.nav_link {
+    padding-inline: 2em;
+    margin-block: auto;
+    text-decoration: none;
+}
+
+#logo {
+    margin: 0;
+    height: 100px;
+    padding: 10px;
+}
+
+.centered {
+    text-align: center;
+}
+
+.big {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.med {
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+.team {
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
+}
+
+.section {
+    display: flex;
+    justify-content: space-around;
+}
+
+.form {
+    padding: 5px;
+}
+
+.item {
+    width: 25%;
+    padding: 2em;
+}
+
+.bg-blue {
+    background-color: cornflowerblue;
+}
+
+.bg-red {
+    background-color: indianred;
+}
+
+.bg-green {
+    background-color: orange;
+}
+
+.w-10 {
+    min-width: 200px;
+    margin: 2%;
+}
+
+.p-5 {
+    padding: 5px;
+}

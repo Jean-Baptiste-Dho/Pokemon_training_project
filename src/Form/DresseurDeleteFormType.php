@@ -14,12 +14,11 @@ class DresseurDeleteFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('dresseur', EntityType::class,[
+            ->add('dresseur', EntityType::class, [
                 'class' => Dresseur::class,
-                'choice_label' => 'dresseurname'
+                'choice_label' => 'name'
             ])
-            ->add('Supprimer', SubmitType::class)
-        ;
+            ->add('Supprimer', SubmitType::class);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

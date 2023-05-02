@@ -9,6 +9,10 @@ security:
       entity:
         class: App\Entity\User
         property: email
+    app_dresseur_provider:
+      entity:
+        class: App\Entity\Dresseur
+        property: email
   role_hierarchy:
     ROLE_ADMIN: ROLE_USER
 
@@ -18,7 +22,7 @@ security:
       security: false
     main:
       lazy: true
-      provider: app_user_provider
+      provider: app_dresseur_provider
       custom_authenticator: App\Security\UserAuthenticator
       logout:
         path: app_logout
@@ -35,7 +39,7 @@ security:
   # Note: Only the *first* access control that matches will be used
   access_control:
   # require ROLE_ADMIN for /admin*
-   - { path: ^/pokemon/*$, roles: ROLE_ADMIN }
+  # - { path: ^/pokemon/*, roles: ROLE_ADMIN }
 
 
 when@test:

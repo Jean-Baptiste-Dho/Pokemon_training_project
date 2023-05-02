@@ -1,30 +1,23 @@
 {% block title %}
-    <br>
-    <br>
-    <a href="{{ path('app_main') }}">Retour à l'index :</a>
-    <br>
-    <br>
-    <a href="{{  path('app_dresseurs_create')}}">Ajouter un dresseur :</a>
-    <br>
-    <br>
-    <a href="{{  path('app_pokemons_create')}}">Ajouter un pokémon :</a>
-    <br>
-    <br>
-    <a href="{{  path('app_pokemons')}}">Listes complète Poke/Dresseurs :</a>
-    <br>
-    <br>
-    <a href="{{ path('app_login') }}">Connexion :</a>
-    <br>
-    <br>
-    <a href="{{ path('app_register') }}">Enregistrement :</a>
-    <br>
-    <br>
-{#    <a href="{{ path('/show_gen/1') }}">Pokémons de la génération 1 :</a>#}
-    <br>
-    <br>
-{#    <a href="{{ path('show_pokemons') }}">infos Pokémon suivant ID  :</a>#}
-    <br>
-    <br>
+    <nav class="container">
+        <div>
+            <img id="logo" src="{{ '/img/logo.webp' }}">
+        </div>
+        <div class="container">
+            <a class="nav_link med" href="{{ path('app_main') }}">Accueil</a>
+            {#            <a class="nav_link med" href="{{ path('app_dresseurs_create') }}">Ajouter un dresseur</a> #}
+            <a class="nav_link med" href="">Gestionnaire d'échange</a>
+            <a class="nav_link med" href="{{ path('app_pokemons') }}">Listes complète Poke/Dresseurs</a>
 
+            {# TODO: Ajouter une condition pour changer l'affichage pour "déconnexion"
+             TODO: si l'utilisateur est connecté et masquer les autres items de la navBar #}
+            {% if not is_granted('IS_AUTHENTICATED') %}
+                <a class="nav_link med" href="{{ path('app_login') }}">Connexion</a>
+                <a class="nav_link med" href="{{ path('app_register') }}">Inscription</a>
+            {% else %}
+                <a class="nav_link med" href="{{ path('app_logout') }}">Déconnexion</a>
+            {% endif %}
 
+        </div>
+    </nav>
 {% endblock %}

@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Pokemon;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -14,7 +15,7 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method Pokemon[]    findAll()
  * @method Pokemon[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class PokemonsRepository extends ServiceEntityRepository
+class PokemonRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
@@ -63,4 +64,10 @@ class PokemonsRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+
+    public function findAllOrderedQB(): QueryBuilder
+    {
+        return $this->createQueryBuilder('p')
+            ->orderBy('p.pokedexId', 'asc');
+    }
 }

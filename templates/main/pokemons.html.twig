@@ -3,28 +3,31 @@
 {% block title %}Pokemons{% endblock %}
 
 {% block body %}
-<h3>Liste des dresseurs et leurs pokémons :</h3>
+    <h3>Liste des dresseurs et leurs pokémons :</h3>
 
     {% for dresseur in dresseurs %}
-    <div>
-        <h3>{{ dresseur.dresseurname }}
+        <div>
+            <h3>{{ dresseur.name }}
 
-                    {%  if (is_granted('ROLE_ADMIN'))%}
-            <a href={{ path('dresseur_delete', {'id': dresseur.id}) }}>-Supprimer-</a> <a href={{ path('dresseur_update', {'id': dresseur.id}) }}> -Modifier-</a>
-                    {% endif %}
-        </h3>
+                {#                            {% if (is_granted('ROLE_ADMIN')) %} #}
+                {#                            <a href={{ path('dresseur_delete', {'id': dresseur.id}) }}>-Supprimer-</a> <a #}
+                {#                                    href={{ path('dresseur_update', {'id': dresseur.id}) }}> -Modifier-</a> #}
+                {#                            {% endif %} #}
 
-        <ul>
-            {% for pokemonSpecie in dresseur.pokemonSpecies %}
-                <li>{{ pokemonSpecie.name }} - {{ pokemonSpecie.type }}
-                    {%  if (is_granted('ROLE_ADMIN'))%}
-                    <a href={{ path('pokemon_delete', {'id': pokemonSpecie.id}) }}>-Supprimer-</a> <a href={{ path('pokemon_update', {'id': pokemonSpecie.id}) }}>-Modifier-</a>}
-                    {% endif %}
-
-                </li>
-            {% endfor %}
-        </ul>
-    </div>
+            </h3>
+            <ul>
+                {% for pokemon in dresseur.pokemons %}
+                    <li>{{ pokemon.pokemon.name }} ({{ pokemon.surname }})
+                        {% if is_granted('update', pokemon) %}
+                            <a href={{ path('pokemon_update', {'id': pokemon.id}) }}>-Modifier-</a>
+                        {% endif %}
+                        {% if (is_granted('delete', pokemon)) %}
+                            <a href={{ path('pokemon_delete', {'id': pokemon.id}) }}>-Supprimer-</a>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
 
     {% endfor %}
 

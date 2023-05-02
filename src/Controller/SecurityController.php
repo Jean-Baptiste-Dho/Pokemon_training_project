@@ -15,14 +15,7 @@ class SecurityController extends AbstractController
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
         if ($this->getUser()) {
-
-            //TODO gérer la vérification d'un dresseur et si non, redirection vers le form de  création
-//            $id = $this->getUser()->getDresseurId();
-//            dd($id);
-//            if (!$id) {
-//                return $this->redirectToRoute('/formDresseur');
-//            }
-//            return $this->redirectToRoute('/dresseur/' . $id);
+            return $this->redirectToRoute('dresseur/index');
         }
 
         // get the login error if there is one

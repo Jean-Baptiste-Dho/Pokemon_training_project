@@ -80,3 +80,7 @@ Pokemon saisie : test - Type : Plante
 2023-04-21 15:24:10 Dresseur supprimé : gseseg - Password : segsegsegesg -!! Tous les pokémons liés à ce dresseur ont également été supprimé -
 2023-04-24 09:52:05Pokemon mis à jour : Tentacool - Type : Eau - rien
 2023-04-24 09:53:17 Dresseur saisie : test - Password : test
+2023-04-27 11:35:24 Dresseur saisie : jean-louis - Password : $2y$13$srHPl/rzAOpMdCTztGS9jOFaKH/aaA/L6NOmMDe4/nps.74WgxgAG
+2023-04-27 18:03:43 Dresseur mis à jour : Sacha - Password : Sacha
+2023-04-28 09:38:00 Dresseur saisie : Ondine - Password : $2y$13$ZkjiDfxr1hbwVI3lb1FBJ.u3VC6kSCdOjwbtfBIiwjnztWQPZimbu
+2023-04-28 10:00:26 Dresseur saisie : Pierre - Password : $2y$13$sEQxaimQBcCLeGMxNNz/seJjku1L7qMG8uZwjt9dH4IcrYEltxOdu

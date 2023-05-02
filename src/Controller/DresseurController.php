@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Dresseur;
 use App\Form\DresseurAddFormType;
 use App\Repository\DresseurRepository;
+use App\Trait\DresseurTrait;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,20 +15,41 @@ use Symfony\Component\Form\FormTypeInterface;
 
 class DresseurController extends AbstractController
 {
-    #[Route('/dresseur/{id}', name: 'app_dresseur')]
-    public function index(DresseurRepository $dresseurRepository , int $id ): Response
+    use DresseurTrait;
+
+//
+//    #[Route('/dresseur/{id}', name: 'app_dresseur')]
+//    public function index(DresseurRepository $dresseurRepository , int $id ): Response
+//    {
+//        $dresseur = $dresseurRepository->find($id);
+////        exit();
+//
+//        return $this->render('dresseur/accueil.html.twig', [
+//            'dresseurs' => $dresseur
+//
+//        ]);
+//    }
+//
+    #[Route('/dresseur/{name}', name: 'app_dresseur')]
+    public function index(DresseurRepository $dresseurRepository, ?string $name = null): Response
     {
-        $dresseur = $dresseurRepository->find($id);
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_REMEMBERED');
+
+        if (!$name) {
+            $name = $this->getDresseur()->getName();
+        }
+
+        $dresseur = $dresseurRepository->findOneByName($name);
 //        exit();
 
         return $this->render('dresseur/index.html.twig', [
-            'dresseurs' => $dresseur
+            'dresseur' => $dresseur
 
         ]);
     }
 
-        #[Route('/formDresseur', name: 'app_dresseurs_create')]
-    public function new(Request $request, EntityManagerInterface  $entityManager): Response
+    #[Route('/formDresseur', name: 'app_dresseurs_create')]
+    public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $dresseur = new Dresseur();
 
@@ -47,11 +69,11 @@ class DresseurController extends AbstractController
     }
 
     #[Route('/dresseur/modif/{id}', name: 'dresseur_update')]
-    public function modifdresseur(int $id, Request $request, EntityManagerInterface  $entityManager): Response
+    public function modifdresseur(int $id, Request $request, EntityManagerInterface $entityManager): Response
     {
         $dresseur = $entityManager->getRepository(Dresseur::class)->find($id);
 //
-        $this->denyAccessUnlessGranted('dresseur_delete', $dresseur);
+//        $this->denyAccessUnlessGranted('dresseur_delete', $dresseur);
 
         $form = $this->createForm(DresseurAddFormType::class, $dresseur);
 
@@ -65,16 +87,16 @@ class DresseurController extends AbstractController
 
 
         return $this->render('main/modifDresseur.html.twig', [
-            'modifDresseur' => $form->createView()
+            'form' => $form->createView()
         ]);
     }
 
     #[Route('/dresseur/delete/{id}', name: 'dresseur_delete')]
-    public function delete(int $id, EntityManagerInterface  $entityManager) : Response
+    public function delete(int $id, EntityManagerInterface $entityManager): Response
     {
         $dresseur = $entityManager->getRepository(Dresseur::class)->find($id);
 
-        $this->denyAccessUnlessGranted('dresseur_delete', $dresseur);
+//        $this->denyAccessUnlessGranted('dresseur_delete', $dresseur);
 
         if (!$dresseur) {
             throw $this->createNotFoundException('Dresseur non trouvé');
@@ -88,11 +110,11 @@ class DresseurController extends AbstractController
     }
 
     #[Route('/dresseur/type/{type}', name: 'dresseur_using_type')]
-    public function getUsingType(string $type, EntityManagerInterface  $entityManager) : Response
+    public function getUsingType(string $type, EntityManagerInterface $entityManager): Response
     {
         $type = $entityManager->getRepository(Dresseur::class)->findByType($type);
         dump($type);
-            exit();
+        exit();
         if (!$type) {
             throw $this->createNotFoundException('Type non trouvé');
         }
@@ -102,6 +124,4 @@ class DresseurController extends AbstractController
 
         ]);
     }
-
-
 }

@@ -2,12 +2,12 @@
 
 namespace App\Entity;
 
-use App\Repository\PokemonsRepository;
+use App\Repository\PokemonRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: PokemonsRepository::class)]
+#[ORM\Entity(repositoryClass: PokemonRepository::class)]
 class Pokemon
 {
     #[ORM\Id]
@@ -41,18 +41,6 @@ class Pokemon
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    public function setName(string $name): self
-    {
-        $this->name = $name;
-
-        return $this;
     }
 
     public function getPokedexId(): ?int
@@ -129,6 +117,23 @@ class Pokemon
     public function setColor(string $color): self
     {
         $this->color = $color;
+
+        return $this;
+    }
+
+    public function __toString(): string
+    {
+        return $this->getName();
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
 
         return $this;
     }
