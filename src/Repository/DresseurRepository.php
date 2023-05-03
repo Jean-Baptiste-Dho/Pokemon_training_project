@@ -43,6 +43,7 @@ class DresseurRepository extends ServiceEntityRepository
 
 
     //    find by poke type
+
     /**
      * @return Dresseur[] Returns an array of Dresseur objects
      */
@@ -54,17 +55,6 @@ class DresseurRepository extends ServiceEntityRepository
             ->setParameter('val', $value)
             ->orderBy('d.id', 'ASC')
             ->getQuery()
-            ->getResult()
-            ;
+            ->getResult();
     }
-
-//    public function findOneBySomeField($value): ?Dresseur
-//    {
-//        return $this->createQueryBuilder('u')
-//            ->andWhere('u.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
 }

@@ -53,6 +53,11 @@ class CapturedPokemon
         return $this;
     }
 
+    public function __toString(): string
+    {
+        return $this->getPokemon();
+    }
+
     public function getPokemon(): ?Pokemon
     {
         return $this->pokemon;

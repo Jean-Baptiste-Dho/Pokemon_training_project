@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Échange one to one{% endblock %}
+
+{% block body %}
+
+    <h1 class="centered">Bienvenue, {{ user.name }}</h1>
+    <div class="centered">
+        <h1>Vous voici dans votre gestionnaire d'échange.</h1>
+        <p>Ici, vous avez la possibilité de créer des demandes d'échange de pokémon. Votre demande peut être à
+            destination
+            d'un dresseur particulier ou à l'attention de la totalité des dresseurs.</p>
+        <p>Pour procéder à un échange, il vous faut faire une demande par le formulaire en selectionnant le pokémon que
+            vous
+            souhaitez échanger puis de suivre les options proposées.</p>
+    </div>
+    <div class="centered">
+        {{ form_start(tradingForm, {'attr': {'novalidate': 'novalidate'}}) }}
+        {{ form_errors(tradingForm) }}
+        {{ form_widget(tradingForm) }}
+        {{ form_end(tradingForm) }}
+    </div>
+
+{% endblock %}

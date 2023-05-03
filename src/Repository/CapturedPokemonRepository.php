@@ -3,7 +3,9 @@
 namespace App\Repository;
 
 use App\Entity\CapturedPokemon;
+use App\Entity\Dresseur;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -63,4 +65,19 @@ class CapturedPokemonRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+
+
+    public function findMyQB(Dresseur $dresseur): QueryBuilder
+    {
+        return $this->createQueryBuilder('p')
+            ->where('p.dresseur = :dresseur')
+            ->setParameter('dresseur', $dresseur);
+    }
+
+    public function findNotMyQB(Dresseur $dresseur): QueryBuilder
+    {
+        return $this->createQueryBuilder('p')
+            ->where('p.dresseur != :dresseur')
+            ->setParameter('dresseur', $dresseur);
+    }
 }

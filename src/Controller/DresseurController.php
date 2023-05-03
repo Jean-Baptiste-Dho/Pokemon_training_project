@@ -41,7 +41,6 @@ class DresseurController extends AbstractController
 
         $dresseur = $dresseurRepository->findOneByName($name);
 //        exit();
-
         return $this->render('dresseur/index.html.twig', [
             'dresseur' => $dresseur
 
@@ -71,9 +70,8 @@ class DresseurController extends AbstractController
     #[Route('/dresseur/modif/{id}', name: 'dresseur_update')]
     public function modifdresseur(int $id, Request $request, EntityManagerInterface $entityManager): Response
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_REMEMBERED');
         $dresseur = $entityManager->getRepository(Dresseur::class)->find($id);
-//
-//        $this->denyAccessUnlessGranted('dresseur_delete', $dresseur);
 
         $form = $this->createForm(DresseurAddFormType::class, $dresseur);
 
@@ -94,9 +92,9 @@ class DresseurController extends AbstractController
     #[Route('/dresseur/delete/{id}', name: 'dresseur_delete')]
     public function delete(int $id, EntityManagerInterface $entityManager): Response
     {
-        $dresseur = $entityManager->getRepository(Dresseur::class)->find($id);
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_REMEMBERED');
 
-//        $this->denyAccessUnlessGranted('dresseur_delete', $dresseur);
+        $dresseur = $entityManager->getRepository(Dresseur::class)->find($id);
 
         if (!$dresseur) {
             throw $this->createNotFoundException('Dresseur non trouvé');

@@ -7,11 +7,18 @@
     <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{ pokemon.pokemon.pokedexId }}.png"
          alt="{{ pokemon.pokemon.name }}">
     {% if is_granted('update', pokemon) or is_granted('ROLE_ADMIN') %}
-        <div class="centered pokemon-card-{{ pokemon.pokemon.color }} p-5">
-            <a class="border-{{ pokemon.pokemon.color }}"
-               href="{{ path('pokemon_update', {'id': pokemon.id}) }}">Modifier</a>
-            <a class="border-{{ pokemon.pokemon.color }}"
-               href="{{ path('pokemon_delete', {'id': pokemon.id}) }}">Supprimer</a>
-        </div>
+        {% if trade is not defined %}
+            <div class="centered pokemon-card-{{ pokemon.pokemon.color }} p-5">
+                <a class="border-{{ pokemon.pokemon.color }}"
+                   href="{{ path('pokemon_update', {'id': pokemon.id}) }}">Modifier</a>
+                <a class="border-{{ pokemon.pokemon.color }}"
+                   href="{{ path('pokemon_delete', {'id': pokemon.id}) }}">Supprimer</a>
+            </div>
+        {% elseif trade %}
+            <div class="centered pokemon-card-{{ pokemon.pokemon.color }} p-5">
+                <a class="border-{{ pokemon.pokemon.color }}"
+                   href="">Échanger</a>
+            </div>
+        {% endif %}
     {% endif %}
 </div>
