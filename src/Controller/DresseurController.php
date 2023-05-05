@@ -39,7 +39,9 @@ class DresseurController extends AbstractController
             $name = $this->getDresseur()->getName();
         }
 
-        $dresseur = $dresseurRepository->findOneByName($name);
+        if (!$dresseur = $dresseurRepository->findTestage($name)) {
+            throw $this->createNotFoundException('Le dresseur n\'existe pas');
+        }
 //        exit();
         return $this->render('dresseur/index.html.twig', [
             'dresseur' => $dresseur
@@ -67,9 +69,13 @@ class DresseurController extends AbstractController
         ]);
     }
 
-    #[Route('/dresseur/modif/{id}', name: 'dresseur_update')]
-    public function modifdresseur(int $id, Request $request, EntityManagerInterface $entityManager): Response
+    #[Route('/dresseur/modif/{id}', name: 'dresseur_update', priority: 10)]
+    public function modifdresseur(Request $request, EntityManagerInterface $entityManager, ?int $id = null): Response
     {
+
+        if (!$id) {
+            $id = $this->getDresseur()->getId();
+        }
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_REMEMBERED');
         $dresseur = $entityManager->getRepository(Dresseur::class)->find($id);
 
@@ -80,7 +86,7 @@ class DresseurController extends AbstractController
             $dresseur = $form->getData();
 //            $entityManager->persist($dresseur);
             $entityManager->flush();
-            $this->redirectToRoute('app_main');
+            $this->redirectToRoute('app_main_accueil');
         }
 
 
@@ -104,7 +110,7 @@ class DresseurController extends AbstractController
         $entityManager->flush();
 
         $this->addFlash('message', 'Dresseur supprimé');
-        return $this->redirectToRoute('app_main');
+        return $this->redirectToRoute('app_main_accueil');
     }
 
     #[Route('/dresseur/type/{type}', name: 'dresseur_using_type')]
@@ -113,12 +119,12 @@ class DresseurController extends AbstractController
         $type = $entityManager->getRepository(Dresseur::class)->findByType($type);
         dump($type);
         exit();
-        if (!$type) {
-            throw $this->createNotFoundException('Type non trouvé');
-        }
-
-        return $this->render('types.html.twig', [
-            'Type' => $type
+//        if (!$type) {
+//            throw $this->createNotFoundException('Type non trouvé');
+//        }
+//
+//        return $this->render('types.html.twig', [
+//            'Type' => $type
 
         ]);
     }

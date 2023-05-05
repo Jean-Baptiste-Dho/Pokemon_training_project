@@ -2,12 +2,14 @@
 
 namespace App\Entity;
 
+use App\Interface\InstanceInterface;
 use App\Repository\CapturedPokemonRepository;
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: CapturedPokemonRepository::class)]
-class CapturedPokemon
+class CapturedPokemon implements InstanceInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -69,6 +71,22 @@ class CapturedPokemon
         $this->pokemon = $pokemon;
 
         return $this;
+    }
+
+    /*
+ * fonction issue d'InstanceInterface
+ */
+    public function describeLog($action): string
+    {
+        $date = new DateTime();
+        $date_formatted = $date->format('Y-m-d H:i:s');
+
+        return match ($action) {
+            "persist" => $date_formatted . ' ' . $this->dresseur . " a capturé un " . $this->pokemon . " sauvage.\n",
+            "update" => $date_formatted . ' ' . $this->dresseur . " a renomé son " . $this->pokemon . " : ' " . $this->surname . " '\n",
+            "remove" => $date_formatted . ' ' . $this->dresseur . " a relaché son " . $this->pokemon . " dans la nature.\n",
+            default => "",
+        };
     }
 
 }

@@ -46,7 +46,7 @@ class TradingManagerController extends AbstractController
             );
 
 
-            return $this->redirectToRoute('app_main');
+            return $this->redirectToRoute('app_main_accueil');
         }
 
 

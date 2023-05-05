@@ -43,12 +43,47 @@ class TradeRepository extends ServiceEntityRepository
         }
     }
 
-    public function getCurrentTrades($capturedPokemonIds)
+    /*
+     * Trade en cours qui vise un de mes CapturedPokemon
+     */
+    public function getCurrentTrades(Dresseur $dresseur)
     {
-        $qb = $this->createQueryBuilder('t')
-            ->where('t.capturedPokemonBuyer IN (:capturedPokemon)')
-            ->setParameter('capturedPokemon', $capturedPokemonIds);
+        $qb = $this->createPendingQB()
+            ->andWhere('t.capturedPokemonBuyer IN (:capturedPokemon)')
+            ->setParameter('capturedPokemon', $dresseur->getPokemons());
+
         return $qb->getQuery()->getResult();
+    }
+
+    /*
+     * Trade en cours qui cible un type de pokemon que j'ai
+     */
+    public function getCurrentOpportunities(Dresseur $dresseur)
+    {
+        $qb = $this->createPendingQB()
+            ->leftJoin(CapturedPokemon::class, 'c', 'WITH', 't.pokemon = c.pokemon')
+            ->andWhere('c.dresseur = :dresseur')
+            ->setParameter('dresseur', $dresseur);
+
+        return $qb->getQuery()->getResult();
+    }
+
+    /*
+     * Historique de mes trades
+     */
+    public function getMyTrades(Dresseur $dresseur)
+    {
+
+    }
+
+    private function createPendingQB()
+    {
+        return $this->createQueryBuilder('t')
+            ->leftJoin('t.pokemon', 'p')
+            ->addSelect('p')
+            ->where('t.status = :status')
+            ->setParameter('status', Trade::PENDING);
+
     }
 
 //    /**

@@ -18,26 +18,16 @@ class MainController extends AbstractController
     use DresseurTrait;
 
     #[Route('/accueil', name: 'app_main_accueil')]
-    public function Accueil(EntityManagerInterface $entityManager, TradeRepository $tradingManagerRepository): Response
+    public function Accueil(EntityManagerInterface $entityManager, TradeRepository $tradeRepo): Response
     {
-        $user = $this->getDresseur()->getName();
-        $id = $this->getDresseur()->getId();
+        $dresseur = $this->getDresseur();
+        $currentTrades = $tradeRepo->getCurrentTrades($dresseur);
+        $everyoneTrades = $tradeRepo->getCurrentOpportunities($dresseur);
 
-        $dresseurRepo = $entityManager->getRepository(Dresseur::class);
-        $capturedPokemonRepo = $entityManager->getRepository(CapturedPokemon::class);
-        $tradeRepo = $entityManager->getRepository(Trade::class);
-
-        $dresseur = $dresseurRepo->find($id);
-        $capturedPokemons = $capturedPokemonRepo->findByDresseur($id);
-        $currentTrades = $tradeRepo->getCurrentTrades($capturedPokemons);
-
-
-//        $dresseur = $dresseurRepo->findAll($this->getDresseur()->getName());
         return $this->render('main/accueil.html.twig', [
-            'dresseurs' => $dresseur,
-            'user' => $user,
-            'id' => $id,
-            'trades' => $currentTrades
+            'dresseur' => $dresseur,
+            'trades' => $currentTrades,
+            'everyoneTrades' => $everyoneTrades,
         ]);
     }
 

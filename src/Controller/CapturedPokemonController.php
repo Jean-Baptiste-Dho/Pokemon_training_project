@@ -42,11 +42,11 @@ class CapturedPokemonController extends AbstractController
 
             $this->addFlash(
                 'success',
-                'Pokémon ajouté avec succès à votre collection !'
+                'Vous avez capturé un ' . $pokemon . ' sauvage ! Félicitations !!'
             );
 
 
-            return $this->redirectToRoute('app_main');
+            return $this->redirectToRoute('app_main_accueil');
         }
 
         return $this->render('main/formPoke.html.twig', [
@@ -74,7 +74,7 @@ class CapturedPokemonController extends AbstractController
             );
 
 
-            return $this->redirectToRoute('app_main');
+            return $this->redirectToRoute('app_main_accueil');
         }
 
 
@@ -98,11 +98,11 @@ class CapturedPokemonController extends AbstractController
 
         $this->addFlash(
             'success',
-            'Pokémon supprimé avec succès !'
+            'Vous avez relaché votre ' . $pokemon . ' dans la nature !'
         );
 
 
-        return $this->redirectToRoute('app_main');
+        return $this->redirectToRoute('app_main_accueil');
     }
 
 

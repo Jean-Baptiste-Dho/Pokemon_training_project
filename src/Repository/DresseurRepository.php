@@ -57,5 +57,18 @@ class DresseurRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
-    
+
+    public function findTestage($name)
+    {
+        return $this->createQueryBuilder('d')
+            ->leftJoin('d.pokemons', 'c')
+            ->leftJoin('c.pokemon', 'p')
+            ->addSelect('c')
+            ->addSelect('p')
+            ->where('d.name = :name')
+            ->setParameter('name', $name)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+
 }
