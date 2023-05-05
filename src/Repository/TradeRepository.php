@@ -2,26 +2,30 @@
 
 namespace App\Repository;
 
-use App\Entity\TradingManager;
+use App\Entity\CapturedPokemon;
+use App\Entity\Dresseur;
+use App\Entity\Pokemon;
+use App\Entity\Trade;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<TradingManager>
+ * @extends ServiceEntityRepository<Trade>
  *
- * @method TradingManager|null find($id, $lockMode = null, $lockVersion = null)
- * @method TradingManager|null findOneBy(array $criteria, array $orderBy = null)
- * @method TradingManager[]    findAll()
- * @method TradingManager[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Trade|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Trade|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Trade[]    findAll()
+ * @method Trade[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class TradingManagerRepository extends ServiceEntityRepository
+class TradeRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, TradingManager::class);
+        parent::__construct($registry, Trade::class);
     }
 
-    public function save(TradingManager $entity, bool $flush = false): void
+    public function save(Trade $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -30,13 +34,21 @@ class TradingManagerRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(TradingManager $entity, bool $flush = false): void
+    public function remove(Trade $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
         if ($flush) {
             $this->getEntityManager()->flush();
         }
+    }
+
+    public function getCurrentTrades($capturedPokemonIds)
+    {
+        $qb = $this->createQueryBuilder('t')
+            ->where('t.capturedPokemonBuyer IN (:capturedPokemon)')
+            ->setParameter('capturedPokemon', $capturedPokemonIds);
+        return $qb->getQuery()->getResult();
     }
 
 //    /**

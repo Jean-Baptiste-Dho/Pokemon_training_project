@@ -2,7 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\CapturedPokemon;
 use App\Entity\Dresseur;
+use App\Entity\Trade;
+use App\Repository\TradeRepository;
 use App\Trait\DresseurTrait;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -14,17 +17,27 @@ class MainController extends AbstractController
 {
     use DresseurTrait;
 
-    #[Route('/accueil', name: 'app_main')]
-    public function Accueil(EntityManagerInterface $entityManager): Response
+    #[Route('/accueil', name: 'app_main_accueil')]
+    public function Accueil(EntityManagerInterface $entityManager, TradeRepository $tradingManagerRepository): Response
     {
         $user = $this->getDresseur()->getName();
+        $id = $this->getDresseur()->getId();
 
         $dresseurRepo = $entityManager->getRepository(Dresseur::class);
+        $capturedPokemonRepo = $entityManager->getRepository(CapturedPokemon::class);
+        $tradeRepo = $entityManager->getRepository(Trade::class);
 
-        $dresseur = $dresseurRepo->findAll($this->getDresseur()->getName());
+        $dresseur = $dresseurRepo->find($id);
+        $capturedPokemons = $capturedPokemonRepo->findByDresseur($id);
+        $currentTrades = $tradeRepo->getCurrentTrades($capturedPokemons);
+
+
+//        $dresseur = $dresseurRepo->findAll($this->getDresseur()->getName());
         return $this->render('main/accueil.html.twig', [
             'dresseurs' => $dresseur,
-            'user' => $user
+            'user' => $user,
+            'id' => $id,
+            'trades' => $currentTrades
         ]);
     }
 

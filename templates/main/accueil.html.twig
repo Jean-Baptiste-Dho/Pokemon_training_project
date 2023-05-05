@@ -7,8 +7,7 @@
     <div class="section centered">
         <div class="centered item bg-blue">
             <h3><a href="{{ path('app_dresseur', {'id': user}) }}">Gérer mes pokémons</a></h3>
-            {{ dump(dresseurs) }}
-            <h3><a href="">Gérer mon compte</a></h3>
+            <h3><a href="{{ path('dresseur_update', {'id': id}) }}">Gérer mon compte</a></h3>
             <h3><a href="{{ path('pokemon_create') }}">Capturer des pokémons</a></h3>
             <h3><a href="{{ path('app_trading_manager') }}">Faire un échange de pokémon</a></h3>
         </div>
@@ -39,11 +38,15 @@
     </div>
     <div class="section centered">
         <div class="centered item bg-green">
-            <h2>Demande d'échange en cours :</h2>
-            <h3>(Classement par nombre de pokémons capturés)</h3>
-            {% for dresseur in dresseurs %}
-                <a class="med" href={{ path('app_dresseur', {name: dresseur.name}) }}> {{ dresseur.name }}</a>
-            {% endfor %}
+            <h2>Nouvelles demande d'échange :</h2>
+            <div class="bg-yellow item2">
+                {% for trade in trades %}
+                    <div class="">{{ trade.capturedPokemonSeller.dresseur.name }} souhaite vous
+                        échanger un {{ trade.capturedPokemonSeller }}.<br><a
+                                href="{{ path('app_trading_finalise', {'id': trade.id}) }}">
+                            Voir l'échange</a></div>
+                {% endfor %}
+            </div>
         </div>
         <div class="centered item bg-red">
             <h2>Top des meilleurs dresseurs :</h2>
@@ -53,7 +56,6 @@
             {% endfor %}
         </div>
     </div>
-
 
 
 {% endblock %}

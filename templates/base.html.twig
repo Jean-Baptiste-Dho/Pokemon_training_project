@@ -11,9 +11,10 @@
         <link rel="stylesheet" href="/css/base.css">
     {% endblock %}
 
-    {#        {% block javascripts %} #}
-    {#            {{ encore_entry_script_tags('app') }} #}
-    {#        {% endblock %} #}
+    {% block javascripts %}
+        <script type="application/javascript" src="/javascript/filter.js" defer></script>
+        {#                {{ encore_entry_script_tags('app') }} #}
+    {% endblock %}
 </head>
 <body>
 {% include 'navLinks/links.html.twig' %}

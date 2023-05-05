@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Échange one to one{% endblock %}
+
+{% block body %}
+
+    <h1 class="centered">Bienvenue, {{ user.name }}</h1>
+    <div class="centered">
+        <h1>Vous voici dans votre gestionnaire d'échange.</h1>
+        <p>Ici, vous trouverez vos demandes d'échange en attente de validation ainsi que l'historique des demandes déjà
+            réalisées. </p>
+    </div>
+    <div class="centered">
+        <p>{{ trade.capturedPokemonSeller.dresseur }} souhaite échanger son pokémon
+            : {{ trade.capturedPokemonSeller }}</p>
+        <p>contre un pokémon de type: {{ trade.pokemon }}</p>
+        {{ form_start(finalForm, {'attr': {'novalidate': 'novalidate'}}) }}
+        {{ form_errors(finalForm) }}
+        {{ form_widget(finalForm) }}
+        {{ form_end(finalForm) }}
+    </div>
+
+{% endblock %}

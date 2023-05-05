@@ -57,4 +57,5 @@ class DresseurRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+    
 }

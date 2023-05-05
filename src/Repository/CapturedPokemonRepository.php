@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\CapturedPokemon;
 use App\Entity\Dresseur;
+use App\Entity\Pokemon;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
@@ -74,10 +75,35 @@ class CapturedPokemonRepository extends ServiceEntityRepository
             ->setParameter('dresseur', $dresseur);
     }
 
+    public function findMyByTypeQB(Dresseur $dresseur, Pokemon $pokemon): QueryBuilder
+    {
+        return $this->createQueryBuilder('p')
+            ->where('p.dresseur = :dresseur')
+            ->andWhere('p.pokemon = :pokemon')
+            ->setParameter('dresseur', $dresseur)
+            ->setParameter('pokemon', $pokemon);
+    }
+
     public function findNotMyQB(Dresseur $dresseur): QueryBuilder
     {
         return $this->createQueryBuilder('p')
             ->where('p.dresseur != :dresseur')
             ->setParameter('dresseur', $dresseur);
     }
+
+//    public function findByDresseur($id)
+//    {
+//        $arrayIds = array();
+//
+//        $qb = $this->createQueryBuilder('cp')
+//            ->select('cp.id')
+//            ->where('cp.dresseur = :id')
+//            ->setParameter('id', $id)
+//            ->getQuery()->getResult();
+//        return $qb;
+//        foreach ($qb as $key => $value) {
+//            $arrayIds[$value['id']] = $value['id'];
+//        }
+//        return $arrayIds;
+//    }
 }

@@ -3,7 +3,6 @@
 namespace App\Service;
 
 use Symfony\Contracts\HttpClient\HttpClientInterface;
-use function Webmozart\Assert\Tests\StaticAnalysis\length;
 
 class CallPokeApi
 {

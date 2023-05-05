@@ -185,6 +185,10 @@ body {
     background-color: orange;
 }
 
+.bg-yellow {
+    background-color: yellowgreen;
+}
+
 .w-10 {
     min-width: 200px;
     margin: 2%;
@@ -192,4 +196,9 @@ body {
 
 .p-5 {
     padding: 5px;
+}
+
+.item2 {
+    min-width: 75%;
+
 }
