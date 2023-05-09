@@ -52,7 +52,7 @@ class DresseurVoter extends Voter
                 break;
             case self::DELETE:
 //                si l'utilisateur est le createur, oui, sinon, non
-                // logic to determine if the user can VIEW
+                // logic to determine if the user can DELETE
                 return true or false;
                 break;
         }

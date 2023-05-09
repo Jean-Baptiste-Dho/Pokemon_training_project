@@ -18,12 +18,11 @@ class MainController extends AbstractController
     use DresseurTrait;
 
     #[Route('/accueil', name: 'app_main_accueil')]
-    public function Accueil(EntityManagerInterface $entityManager, TradeRepository $tradeRepo): Response
+    public function Accueil(TradeRepository $tradeRepo): Response
     {
         $dresseur = $this->getDresseur();
         $currentTrades = $tradeRepo->getCurrentTrades($dresseur);
         $everyoneTrades = $tradeRepo->getCurrentOpportunities($dresseur);
-
         return $this->render('main/accueil.html.twig', [
             'dresseur' => $dresseur,
             'trades' => $currentTrades,
@@ -31,10 +30,14 @@ class MainController extends AbstractController
         ]);
     }
 
-//    #[Route('/test', name: 'app_test')]
-//    public function testage(?Profiler $profiler) {
-//            dump($profiler->isEnabled());exit;
-//
-//        return new JsonResponse("blabla");
-//    }
+    #[Route('/historique', name: 'historique')]
+    public function historique(EntityManagerInterface $entityManager, TradeRepository $tradeRepo): Response
+    {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_REMEMBERED');
+        $historique = $tradeRepo->getMyTrades($this->getDresseur());
+
+        return $this->render('main/historique.html.twig', [
+            'historique' => $historique
+        ]);
+    }
 }

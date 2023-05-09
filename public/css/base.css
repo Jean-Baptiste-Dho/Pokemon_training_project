@@ -189,6 +189,10 @@ body {
     background-color: yellowgreen;
 }
 
+.bg-divers {
+    background-color: #fce7b7;
+}
+
 .w-10 {
     min-width: 200px;
     margin: 2%;
@@ -198,6 +202,10 @@ body {
     padding: 5px;
 }
 
+.m-5 {
+    margin: 15px;
+}
+
 .item2 {
     min-width: 75%;
 
@@ -205,4 +213,43 @@ body {
 
 .column {
     display: flex;
+}
+
+.section2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.section3 {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.w40 {
+    max-width: 40%;
+    margin: auto;
+}
+
+.w90 {
+    max-width: 90%;
+    margin: auto;
+}
+
+.h-auto {
+    margin-block: 20%;
+}
+
+.h-80 {
+    height: 80%;
+}
+
+table, th, td {
+    border: 1px solid white;
+    border-collapse: collapse;
+}
+
+th, td {
+    background-color: #96D4D4;
 }

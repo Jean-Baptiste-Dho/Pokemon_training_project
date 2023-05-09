@@ -16,12 +16,12 @@ use Symfony\Component\HttpFoundation\Request;
 class CapturedPokemonController extends AbstractController
 {
     #[Route('/pokemonSpecies', name: 'app_pokemons')]
-    public function index(Request $request, EntityManagerInterface $entityManager): Response
+    public function index(EntityManagerInterface $entityManager): Response
     {
         $dresseurRepo = $entityManager->getRepository(Dresseur::class);
         $dresseur = $dresseurRepo->findAll();
 
-        return $this->render('main/pokemons.html.twig', [
+        return $this->render('/main/pokemons.html.twig', [
             'dresseurs' => $dresseur
         ]);
     }

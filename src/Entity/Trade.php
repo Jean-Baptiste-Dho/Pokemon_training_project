@@ -139,6 +139,16 @@ class Trade
         return $this->getCapturedPokemonBuyer()?->getDresseur();
     }
 
+    public function getStatusText(): string
+    {
+        return match ($this->status) {
+            self::PENDING => 'En cours',
+            self::REFUSED => 'Refusé',
+            self::ACCEPTED => 'Accepté',
+            default => 'Données non valides'
+        };
+    }
+
     /*****************************************
      * Validation ****************************
      *****************************************/

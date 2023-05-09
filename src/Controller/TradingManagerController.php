@@ -8,6 +8,7 @@ use App\Entity\Trade;
 use App\Form\CreateTradingFormType;
 use App\Form\FinaliseTradingFormType;
 use App\Repository\TradeRepository;
+use App\Security\Voter\TradeVoter;
 use App\Trait\DresseurTrait;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -19,14 +20,6 @@ use function Webmozart\Assert\Tests\StaticAnalysis\throws;
 class TradingManagerController extends AbstractController
 {
     use DresseurTrait;
-
-//    #[Route('/trading/manager', name: 'app_trading_manager')]
-//    public function index(): Response
-//    {
-//        return $this->render('trading_manager/index.html.twig', [
-//            'controller_name' => 'TradingManagerController',
-//        ]);
-//    }
 
     #[Route('/trading/manager', name: 'app_trading_manager')]
     public function getTrade(EntityManagerInterface $entityManager, Request $request): Response
@@ -57,6 +50,28 @@ class TradingManagerController extends AbstractController
 
         ]);
     }
+
+    #[Route('/trade/delete/{id}', name: 'trade_delete')]
+    public function delete(int $id, EntityManagerInterface $entityManager): Response
+    {
+        $trade = $entityManager->getRepository(Trade::class)->find($id);
+        $this->denyAccessUnlessGranted(TradeVoter::DELETE, $trade);
+
+        if (!$trade) {
+            throw $this->createNotFoundException('Échange non trouvé');
+        }
+
+        $entityManager->remove($trade);
+        $entityManager->flush();
+
+        $this->addFlash(
+            'success',
+            'Vous avez annuler votre offre num°' . $trade->getId()
+        );
+
+        return $this->redirectToRoute('app_main_accueil');
+    }
+
 
     #[Route('/trading/manager/finalise/{id}', name: 'app_trading_finalise')]
     public function finalise(int $id, EntityManagerInterface $entityManager, Request $request): Response
@@ -106,4 +121,6 @@ class TradingManagerController extends AbstractController
 
         ]);
     }
+
+
 }

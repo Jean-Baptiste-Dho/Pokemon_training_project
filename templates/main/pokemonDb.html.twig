@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Pokemons DataBase{% endblock %}
+
+{% block body %}
+    <div class="section3 w90">
+        {% for pokemon in pokemons %}
+            <div class="pokemon-card pokemon-card-{{ pokemon.color }} w-10">
+                <div class="centered border-{{ pokemon.color }}">{{ pokemon.name }}
+                </div>
+                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{ pokemon.pokedexId }}.png"
+                     alt="{{ pokemon.name }}">
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+

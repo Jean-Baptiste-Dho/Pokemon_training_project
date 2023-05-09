@@ -63,6 +63,7 @@ class TradeRepository extends ServiceEntityRepository
         $qb = $this->createPendingQB()
             ->leftJoin(CapturedPokemon::class, 'c', 'WITH', 't.pokemon = c.pokemon')
             ->andWhere('c.dresseur = :dresseur')
+            ->andWhere('t.capturedPokemonBuyer IS NULL')
             ->setParameter('dresseur', $dresseur);
 
         return $qb->getQuery()->getResult();
@@ -73,7 +74,13 @@ class TradeRepository extends ServiceEntityRepository
      */
     public function getMyTrades(Dresseur $dresseur)
     {
-
+        $qb = $this->createQueryBuilder('t')
+            ->leftJoin('t.capturedPokemonSeller', 'cps')
+            ->leftJoin('t.capturedPokemonBuyer', 'cpb')
+            ->where('cps.dresseur = :dresseur OR cpb.dresseur = :dresseur')
+            ->setParameter('dresseur', $dresseur);
+//        dd($qb->getQuery()->getSQL());
+        return $qb->getQuery()->getResult();
     }
 
     private function createPendingQB()

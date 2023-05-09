@@ -88,3 +88,10 @@ Pokemon saisie : test - Type : Plante
 2023-05-05 15:28:40 Pierre a relaché flareon
 2023-05-05 15:30:26 Pierre a capturé gengar
 2023-05-05 15:33:18 Pierre a relaché songengar
+2023-05-05 16:25:25 Sacha a renomé son golem : ' bigkayouh '
+2023-05-05 16:25:25 Pierre a renomé son machamp : ' Shiva '
+2023-05-09 11:37:41 Pierre a capturé un nidoking sauvage.
+2023-05-09 14:13:58 Pierre a capturé un moltres sauvage.
+2023-05-09 14:14:05 Pierre a relaché son moltres dans la nature.
+2023-05-09 14:14:17 Pierre a capturé un articuno sauvage.
+2023-05-09 14:14:24 Pierre a relaché son articuno dans la nature.

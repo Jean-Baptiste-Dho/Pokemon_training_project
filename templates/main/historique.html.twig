@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Historique{% endblock %}
+
+{% block body %}
+
+    <h2>Historique des échanges réalisés</h2>
+    <table>
+    <tr class="centered">
+        <th>Num trade</th>
+        <th>Dresseur demandeur</th>
+        <th>Pokémon donné</th>
+        <th>Type de Pokémon voulu</th>
+        <th>Pokémon souhaité</th>
+        <th>Dresseur acheteur</th>
+        <th>Statut de la transaction</th>
+        <th>Annuler la transaction</th>
+    </tr>
+
+    {% for trade in historique %}
+        <tr class="centered">
+            <td>{{ trade.id }}</td>
+            <td>{{ trade.seller }}</td>
+            <td>{{ trade.capturedPokemonSeller }}</td>
+            <td>{{ trade.pokemon }}</td>
+            <td>{{ trade.capturedPokemonBuyer|default('NC') }}</td>
+            <td>{{ trade.buyer|default('NC') }}</td>
+            <td>{{ trade.statusText }}</td>
+            {% if trade.statusText is same as('En cours') %}
+                <td><a href="{{ path('trade_delete', {'id' : trade.id}) }}">Supprimer demande</a></td>
+            {% else %}
+                <td>---</td>
+            {% endif %}
+        </tr>
+    {% endfor %}
+
+{% endblock %}

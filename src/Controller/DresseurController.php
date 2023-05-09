@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Dresseur;
 use App\Form\DresseurAddFormType;
 use App\Repository\DresseurRepository;
+use App\Repository\TradeRepository;
 use App\Trait\DresseurTrait;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -125,7 +126,9 @@ class DresseurController extends AbstractController
 //
 //        return $this->render('types.html.twig', [
 //            'Type' => $type
-
-        ]);
+//
+//        ]);
     }
+
+
 }

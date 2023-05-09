@@ -1,0 +1,36 @@
+<div class="centered item bg-orange">
+    <h2>Deal du jour</h2>
+    {#            {{ dump(everyoneTrades) }} #}
+    {% if everyoneTrades %}
+        {% for trade in everyoneTrades %}
+            <div class="bg-yellow column border-red p-5 m-5">
+                <div class="m-5">
+                    <h5>Pokémon échangé :</h5>
+                    <p>{{ trade.capturedPokemonSeller }}</p>
+                </div>
+                <div class="m-5">
+                    <h5>Pokémon recherché :</h5>
+                    <p>{{ trade.pokemon }}</p>
+                </div>
+                <div>
+                    <div>
+                        <h5>Dresseur propriétaire :</h5>
+                        <p>{{ trade.capturedPokemonSeller.dresseur.name }}</p>
+                    </div>
+                    <div>
+                        <h3><a href="{{ path('app_trading_finalise', {id : trade.id}) }}">J'échange !</a></h3>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div>
+            <h2>Pas de pokémon à échanger
+                <br>
+                Aujourd'hui
+                <br>
+                :(
+            </h2>
+        </div>
+    {% endif %}
+</div>

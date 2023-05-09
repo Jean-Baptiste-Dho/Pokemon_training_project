@@ -4,16 +4,20 @@
 
 {% block body %}
 
-    <h1 class="centered">Bienvenue, {{ user.name }}</h1>
+    <h1 class="centered">Bienvenue, {{ app.user }}</h1>
     <div class="centered">
-        <h1>Vous voici dans votre gestionnaire d'échange.</h1>
-        <p>Ici, vous trouverez vos demandes d'échange en attente de validation ainsi que l'historique des demandes déjà
-            réalisées. </p>
+        <h3>Un dresseur vous a fait une proposition d'échange : </h3>
     </div>
-    <div class="centered">
+    <div class="centered bg-divers p-5">
         <p>{{ trade.capturedPokemonSeller.dresseur }} souhaite échanger son pokémon
-            : {{ trade.capturedPokemonSeller }}</p>
-        <p>contre un pokémon de type: {{ trade.pokemon }}</p>
+            : {{ trade.capturedPokemonSeller }} contre un pokémon de type: {{ trade.pokemon }}</p>
+        {% if trade.capturedPokemonBuyer %}
+            <p>Vous possédez un pokémon de ce type, vous l'avez surnommé : "{{ trade.capturedPokemonBuyer.surname }}
+                "</p>
+        {% else %}
+            <p>Vous possédez un pokémon de ce type.</p>
+        {% endif %}
+        <p>Que souhaitez-vous faire ?</p>
         {{ form_start(finalForm, {'attr': {'novalidate': 'novalidate'}}) }}
         {{ form_errors(finalForm) }}
         {{ form_widget(finalForm) }}

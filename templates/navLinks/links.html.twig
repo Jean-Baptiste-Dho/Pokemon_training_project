@@ -1,12 +1,12 @@
 {% block title %}
     <nav class="container">
         <div>
-            <img id="logo" src="{{ '/img/logo.webp' }}">
+            <img id="logo" src="{{ '/img/logo.webp' }}" alt="logo">
         </div>
         <div class="container">
             <a class="nav_link med" href="{{ path('app_main_accueil') }}">Accueil</a>
-            <a class="nav_link med" href="{{ path('app_trading_manager') }}">Gestionnaire d'échange</a>
-            <a class="nav_link med" href="{{ path('app_pokemons') }}">Listes complète Poke/Dresseurs</a>
+            <a class="nav_link med" href="{{ path('app_pokemons') }}">Listes des dresseurs</a>
+            <a class="nav_link med" href="{{ path('app_pokemonDb') }}">Listes complète des pokémons</a>
 
             {# TODO: Ajouter une condition pour changer l'affichage pour "déconnexion"
              TODO: si l'utilisateur est connecté et masquer les autres items de la navBar #}

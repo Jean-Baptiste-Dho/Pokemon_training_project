@@ -40,20 +40,17 @@ class PokemonRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return Pokemon[] Returns an array of Pokemon objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('p')
-//            ->andWhere('p.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('p.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    /**
+     * @return Pokemon[] Returns an array of Pokemon objects
+     */
+    public function findByTwentyFive(): array
+    {
+        return $this->createQueryBuilder('p')
+            ->orderBy('p.pokedexId', 'ASC')
+            ->setMaxResults(25)
+            ->getQuery()
+            ->getResult();
+    }
 
 //    public function findOneBySomeField($value): ?Pokemon
 //    {
