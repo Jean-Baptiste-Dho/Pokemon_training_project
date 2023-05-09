@@ -19,8 +19,16 @@
         {% endif %}
         <p>Que souhaitez-vous faire ?</p>
         {{ form_start(finalForm, {'attr': {'novalidate': 'novalidate'}}) }}
+        {% if finalForm.capturedPokemonBuyer is defined %}
+            <div style="background-color: red;">
+                {{ form_label(finalForm.capturedPokemonBuyer) }}
+                {{ form_widget(finalForm.capturedPokemonBuyer) }}
+                {{ form_errors(finalForm.capturedPokemonBuyer) }}
+            </div>
+        {% endif %}
+        <div style="background-color: green;">{{ form_widget(finalForm.status) }}</div>
+        <div style="background-color: blue;">{{ form_widget(finalForm.submit) }}</div>
         {{ form_errors(finalForm) }}
-        {{ form_widget(finalForm) }}
         {{ form_end(finalForm) }}
     </div>
 

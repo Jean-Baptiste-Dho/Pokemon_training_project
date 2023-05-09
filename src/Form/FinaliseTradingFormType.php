@@ -25,6 +25,22 @@ class FinaliseTradingFormType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+        $trade = $builder->getData();
+
+        if (!$trade->getCapturedPokemonBuyer()) {
+            $builder->add('capturedPokemonBuyer', EntityType::class, [
+                'class' => CapturedPokemon::class,
+                'label' => 'Pokémon des autres dresseurs :',
+                'placeholder' => '---',
+                'query_builder' => function (CapturedPokemonRepository $repo) use ($builder) {
+                    return $repo->findMyByTypeQB($this->storage->getToken()->getUser(), $builder->getData()->getPokemon());
+                },
+                'choice_label' => function (CapturedPokemon $pokemon) {
+                    return $pokemon->getPokemon() . ' - ' . $pokemon->getDresseur();
+                }
+            ]);
+        }
+
         $builder
             ->add('status', ChoiceType::class, [
                 'choices' => [
