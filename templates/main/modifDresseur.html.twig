@@ -4,14 +4,15 @@
 
 {% block body %}
 
+    <div class="centered">
+        <h3>Modifier un Dresseur</h3>
 
-    <h3>Modifier un Dresseur</h3>
-
-    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
-    {{ form_row(form.name) }}
-    {#    {{ form_row(form.email) }} #}
-    {{ form_row(form.password, {'attr': {'class': 'form'}}) }}
-    {{ form_end(form) }}
+        {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+        {{ form_row(form.name) }}
+        {#    {{ form_row(form.email) }} #}
+        {{ form_row(form.password, {'attr': {'class': 'form'}}) }}
+        {{ form_end(form) }}
+    </div>
 
 {% endblock %}
 

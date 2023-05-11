@@ -1,0 +1,19 @@
+<div class="centered m-5 p-5">
+    {% if paginator.page != paginator.first %}
+        <a href="{{ path(paginator.route, {page: paginator.first}) }}" class="box">&lt;&lt;</a>
+        <a href="{{ path(paginator.route, {page: paginator.prev}) }}" class="box">&lt;</a>
+    {% else %}
+        <span class="box">&lt;&lt;</span>
+        <span class="box">&lt;</span>
+    {% endif %}
+
+    <span class="box">{{ paginator.page }}</span>
+
+    {% if paginator.page != paginator.last %}
+        <a href="{{ path(paginator.route, {page: paginator.next}) }}" class="box">&gt;</a>
+        <a href="{{ path(paginator.route, {page: paginator.last}) }}" class="box">&gt;&gt;</a>
+    {% else %}
+        <span class="box">&gt;</span>
+        <span class="box">&gt;&gt;</span>
+    {% endif %}
+</div>

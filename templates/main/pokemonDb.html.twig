@@ -3,8 +3,10 @@
 {% block title %}Pokemons DataBase{% endblock %}
 
 {% block body %}
+    <h1 class="centered m-25 p-10">Pokémons capturables</h1>
+    {% include 'paginationBar/paginationBar.html.twig' %}
     <div class="section3 w90">
-        {% for pokemon in pokemons %}
+        {% for pokemon in paginator.result %}
             <div class="pokemon-card pokemon-card-{{ pokemon.color }} w-10">
                 <div class="centered border-{{ pokemon.color }}">{{ pokemon.name }}
                 </div>
@@ -13,5 +15,6 @@
             </div>
         {% endfor %}
     </div>
+    {% include 'paginationBar/paginationBar.html.twig' %}
 {% endblock %}
 

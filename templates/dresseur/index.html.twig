@@ -5,27 +5,12 @@
 {% block body %}
     <div>
 
-        <h1>{{ dresseur.name }}</h1>
-        <div class="team">
+        <h1 class="centered">Pokémon(s) de {{ dresseur.name }}</h1>
+        <div class="team centered">
             {% for pokemon in dresseur.pokemons %}
                 {% include 'pokemon/card.html.twig' with {pokemon: pokemon} %}
             {% endfor %}
         </div>
-
-        {% if not dresseur %}
-            <h3>Merci de créer un dresseur pour pour capturer des pokémons.</h3>
-
-            {% include 'main/formDresseur.html.twig' %}
-
-            {#        {% else %} #}
-            {#            <h3>Vous avez déjà créer un dresseur.</h3> #}
-            {#            <p> Voici les actions possibles</p> #}
-            {#            <ul> #}
-            {#                <li> Modifier ou supprimer votre dresseur</li> #}
-            {#                <li> Capturer des pokémons</li> #}
-            {#                <li> Modifier ou supprimer des pokémons</li> #}
-            {#            </ul> #}
-        {% endif %}
 
     </div>
 

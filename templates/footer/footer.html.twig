@@ -1,0 +1,22 @@
+{% block title %}
+    <nav class="container">
+        <div>
+            <img id="logo" src="{{ '/img/logo.webp' }}" alt="logo">
+        </div>
+        <div class="container">
+            <a class="nav_link med" href="{{ path('app_main_accueil') }}">Accueil</a>
+            <a class="nav_link med" href="{{ path('app_pokemons') }}">Listes des dresseurs</a>
+            <a class="nav_link med" href="{{ path('app_pokemonDb', {'id' : 1}) }}">Liste complète des pokémons</a>
+
+            {# TODO: Ajouter une condition pour changer l'affichage pour "déconnexion"
+             TODO: si l'utilisateur est connecté et masquer les autres items de la navBar #}
+            {% if not is_granted('IS_AUTHENTICATED') %}
+                <a class="nav_link med" href="{{ path('app_login') }}">Connexion</a>
+                <a class="nav_link med" href="{{ path('app_register') }}">Inscription</a>
+            {% else %}
+                <a class="nav_link med" href="{{ path('app_logout') }}">Déconnexion</a>
+            {% endif %}
+
+        </div>
+    </nav>
+{% endblock %}

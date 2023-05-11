@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Pokemon;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\QueryBuilder;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -43,24 +44,21 @@ class PokemonRepository extends ServiceEntityRepository
     /**
      * @return Pokemon[] Returns an array of Pokemon objects
      */
-    public function findByTwentyFive(): array
+    public function findPokePaginated(int $page = 1, int $limit = 25): Paginator
     {
-        return $this->createQueryBuilder('p')
-            ->orderBy('p.pokedexId', 'ASC')
-            ->setMaxResults(25)
-            ->getQuery()
-            ->getResult();
-    }
+        $limit = abs($limit);
 
-//    public function findOneBySomeField($value): ?Pokemon
-//    {
-//        return $this->createQueryBuilder('p')
-//            ->andWhere('p.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+        $query = $this->getEntityManager()->createQueryBuilder()
+            ->select('p')
+            ->from('App:Pokemon', 'p')
+            ->orderBy('p.pokedexId', 'ASC')
+            ->setMaxResults($limit)
+            ->setFirstResult(($page - 1) * $limit);
+
+        $paginator = new Paginator($query);
+
+        return $paginator;
+    }
 
     public function findAllOrderedQB(): QueryBuilder
     {

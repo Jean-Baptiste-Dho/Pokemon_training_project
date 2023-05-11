@@ -4,36 +4,40 @@
 
 {% block body %}
     <h1 class="centered">Bienvenue {{ dresseur }} !</h1>
-    <div class="section centered">
-        <div class="centered item bg-blue">
-            <h2>Espace personnel</h2>
-            <div class="section2 h-80">
-                <h3><a href="{{ path('app_dresseur', {'id': dresseur}) }}">Gérer mes pokémons</a></h3>
-                <h3><a href="{{ path('dresseur_update') }}">Gérer mon compte</a></h3>
-                <h3><a href="{{ path('pokemon_create') }}">Capturer des pokémons</a></h3>
-                <h3><a href="{{ path('app_trading_manager') }}">Faire un échange de pokémon</a></h3>
-                <h3><a href="{{ path('historique', {'name': dresseur.name}) }}">Historique des échanges</a></h3>
+    <div class="section4">
+        <div class="centered">
+            <div class="centered item bg-blue">
+                <h2>Espace personnel</h2>
+                <div class="container w90">
+                    <h3><a href="{{ path('app_dresseur', {'id': dresseur}) }}">Gérer mes pokémons</a></h3>
+                    <h3><a href="{{ path('dresseur_update') }}">Gérer mon compte</a></h3>
+                    <h3><a href="{{ path('pokemon_create') }}">Capturer des pokémons</a></h3>
+                    <h3><a href="{{ path('app_trading_manager') }}">Faire un échange de pokémon</a></h3>
+                    <h3><a href="{{ path('historique', {'name': dresseur.name}) }}">Historique des échanges</a></h3>
+                </div>
+            </div>
+            <div class="centered item bg-red">
+                <h2>Classement des meilleurs dresseurs :</h2>
+                <div class="section">
+                    {% for place in podium %}
+                        <p><span class="med">N° {{ loop.index }} : {{ place[0].name }}</span>
+                            <br>avec {{ place.counter }} Pokémons.</p>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="centered item bg-green">
+                <h2>Nouvelles demande d'échange :</h2>
+                <div class="item2">
+                    {% for trade in trades %}
+                        <div class="bg-yellow border-green br-10 p-5">{{ trade.capturedPokemonSeller.dresseur.name }}
+                            souhaite vous échanger <br>un {{ trade.capturedPokemonSeller }}.
+                            <br>
+                            <a href="{{ path('app_trading_finalise', {'id': trade.id}) }}">Voir l'échange</a>
+                        </div>
+                    {% endfor %}
+                </div>
             </div>
         </div>
         {% include 'trade_card/tradeCard.html.twig' %}
     </div>
-    <div class="section centered">
-        <div class="centered item bg-green">
-            <h2>Nouvelles demande d'échange :</h2>
-            <div class="bg-yellow item2">
-                {% for trade in trades %}
-                    <div class="">{{ trade.capturedPokemonSeller.dresseur.name }} souhaite vous
-                        échanger un {{ trade.capturedPokemonSeller }}.<br><a
-                                href="{{ path('app_trading_finalise', {'id': trade.id}) }}">
-                            Voir l'échange</a></div>
-                {% endfor %}
-            </div>
-        </div>
-        <div class="centered item bg-red">
-            <h2>Historique des échanges :</h2>
-            {#            <p> {{ dump(test) }}</p> #}
-        </div>
-    </div>
-
-
 {% endblock %}

@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use App\Entity\CapturedPokemon;
 use App\Entity\Dresseur;
-use App\Entity\Trade;
+use App\Repository\DresseurRepository;
 use App\Repository\TradeRepository;
 use App\Trait\DresseurTrait;
 use Doctrine\ORM\EntityManagerInterface;
@@ -18,15 +18,18 @@ class MainController extends AbstractController
     use DresseurTrait;
 
     #[Route('/accueil', name: 'app_main_accueil')]
-    public function Accueil(TradeRepository $tradeRepo): Response
+    public function accueil(TradeRepository $tradeRepo, EntityManagerInterface $em): Response
     {
         $dresseur = $this->getDresseur();
+        $podium = $em->getRepository(Dresseur::class)->podium();
         $currentTrades = $tradeRepo->getCurrentTrades($dresseur);
         $everyoneTrades = $tradeRepo->getCurrentOpportunities($dresseur);
+
         return $this->render('main/accueil.html.twig', [
             'dresseur' => $dresseur,
             'trades' => $currentTrades,
             'everyoneTrades' => $everyoneTrades,
+            'podium' => $podium
         ]);
     }
 

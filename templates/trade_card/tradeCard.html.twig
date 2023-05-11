@@ -1,31 +1,31 @@
-<div class="centered item bg-orange">
+<div class="centered item bg-orange w40">
     <h2>Deal du jour</h2>
-    {#            {{ dump(everyoneTrades) }} #}
     {% if everyoneTrades %}
         {% for trade in everyoneTrades %}
-            <div class="bg-yellow column border-red p-5 m-5">
-                <div class="m-5">
-                    <h5>Pokémon échangé :</h5>
-                    <p>{{ trade.capturedPokemonSeller }}</p>
-                </div>
-                <div class="m-5">
-                    <h5>Pokémon recherché :</h5>
-                    <p>{{ trade.pokemon }}</p>
+            <div class="bg-divers border-red br-10 p-5 m-5">
+                <h4>{{ trade.capturedPokemonSeller.dresseur.name }} propose un deal : </h4>
+                <div class="section m-5">
+                    <div>
+                        <h5>Pokémon échangé :</h5>
+                        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{ trade.capturedPokemonSeller.pokemon.pokedexId }}.png"
+                             alt="{{ trade.capturedPokemonSeller }}">
+                        <p>{{ trade.capturedPokemonSeller }}</p>
+                    </div>
+                    <div class="m-5">
+                        <h5>Pokémon recherché :</h5>
+                        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{ trade.pokemon.pokedexId }}.png"
+                             alt="{{ trade.pokemon }}">
+                        <p>{{ trade.pokemon }}</p>
+                    </div>
                 </div>
                 <div>
-                    <div>
-                        <h5>Dresseur propriétaire :</h5>
-                        <p>{{ trade.capturedPokemonSeller.dresseur.name }}</p>
-                    </div>
-                    <div>
-                        <h3><a href="{{ path('app_trading_finalise', {id : trade.id}) }}">J'échange !</a></h3>
-                    </div>
+                    <h3><a href="{{ path('app_trading_finalise', {id : trade.id}) }}">J'échange !</a></h3>
                 </div>
             </div>
         {% endfor %}
     {% else %}
         <div>
-            <h2>Pas de pokémon à échanger
+            <h2>Pas de deal vous concernant
                 <br>
                 Aujourd'hui
                 <br>

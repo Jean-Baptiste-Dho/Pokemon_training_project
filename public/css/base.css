@@ -1,10 +1,8 @@
 body {
     height: 100vh;
-    background-image: url('/img/bg.webp');
-    background-position: bottom right;
-    background-repeat: no-repeat;
-    box-sizing: border-box;
     background-color: #fce7b7;
+    padding: 0;
+    margin: 0;
 }
 
 .pokemon-card {
@@ -117,12 +115,17 @@ body {
 .container {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+}
+
+.nav_deco {
     background-color: lightyellow;
     text-decoration: none;
 }
 
 .nav_link {
-    padding-inline: 2em;
+    padding-inline-start: 5px;
+    padding-inline-end: 30px;
     margin-block: auto;
     text-decoration: none;
 }
@@ -149,13 +152,14 @@ body {
 
 .team {
     display: flex;
-    justify-content: start;
+    justify-content: space-evenly;
     flex-wrap: wrap;
 }
 
 .section {
     display: flex;
     justify-content: space-around;
+    border-radius: 10px;
 }
 
 .form {
@@ -164,9 +168,14 @@ body {
 
 .item {
     min-width: 25%;
-    min-height: 40%;
     padding: 2em;
     margin: 1em;
+    border-radius: 10px;
+}
+
+.item2 {
+    min-width: 75%;
+
 }
 
 .bg-blue {
@@ -189,8 +198,24 @@ body {
     background-color: yellowgreen;
 }
 
+.bg-white {
+    background-color: white;
+}
+
 .bg-divers {
     background-color: #fce7b7;
+}
+
+.bg-Sacha {
+    background-color: lightcoral;
+}
+
+.bg-Ondine {
+    background-color: lightblue;
+}
+
+.bg-Pierre {
+    background-color: lightgrey;
 }
 
 .w-10 {
@@ -202,13 +227,20 @@ body {
     padding: 5px;
 }
 
-.m-5 {
+.m-15 {
     margin: 15px;
 }
 
-.item2 {
-    min-width: 75%;
+.p-10 {
+    padding: 10px;
+}
 
+.m-25 {
+    margin: 25px;
+}
+
+.br-10 {
+    border-radius: 10px;
 }
 
 .column {
@@ -219,26 +251,43 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    border-radius: 10px;
 }
 
 .section3 {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    border-radius: 10px;
+}
+
+.section4 {
+    display: flex;
+    border-radius: 10px;
 }
 
 .w40 {
-    max-width: 40%;
+    width: 40%;
+    margin: auto;
+}
+
+.w60 {
+    width: 60%;
+    margin: auto;
+}
+
+.w100 {
+    width: 100%;
     margin: auto;
 }
 
 .w90 {
-    max-width: 90%;
+    width: 90%;
     margin: auto;
 }
 
-.h-auto {
-    margin-block: 20%;
+.m-auto {
+    margin: auto;
 }
 
 .h-80 {
@@ -253,3 +302,17 @@ table, th, td {
 th, td {
     background-color: #96D4D4;
 }
+
+.box {
+    padding: 15px;
+    margin: 5px;
+    min-width: 50px;
+    background-color: white;
+    border: darkgoldenrod solid 2px;
+    border-radius: 10px;
+}
+
+.separator {
+    height: 50px;
+}
+

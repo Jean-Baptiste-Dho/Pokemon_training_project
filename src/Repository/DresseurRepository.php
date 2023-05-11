@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Dresseur;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 
@@ -69,6 +70,20 @@ class DresseurRepository extends ServiceEntityRepository
             ->setParameter('name', $name)
             ->getQuery()
             ->getOneOrNullResult();
+    }
+
+    public function podium()
+    {
+        $qb = $this->createQueryBuilder('d')
+            ->leftJoin('d.pokemons', 'c')
+            ->addSelect('COUNT(c.id) AS counter')
+            ->groupBy('d.id')
+            ->orderBy('counter', 'desc')
+            ->setMaxResults(3)
+            ->getQuery()->getResult()//            ->getOneOrNullResult()
+        ;
+//        dd($qb);
+        return $qb;
     }
 
 }

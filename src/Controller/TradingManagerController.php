@@ -66,7 +66,7 @@ class TradingManagerController extends AbstractController
 
         $this->addFlash(
             'success',
-            'Vous avez annuler votre offre num°' . $trade->getId()
+            'Vous avez annulé votre offre num°' . $trade->getId()
         );
 
         return $this->redirectToRoute('app_main_accueil');

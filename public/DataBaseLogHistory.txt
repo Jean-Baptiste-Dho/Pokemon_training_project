@@ -95,3 +95,7 @@ Pokemon saisie : test - Type : Plante
 2023-05-09 14:14:05 Pierre a relaché son moltres dans la nature.
 2023-05-09 14:14:17 Pierre a capturé un articuno sauvage.
 2023-05-09 14:14:24 Pierre a relaché son articuno dans la nature.
+2023-05-10 11:37:59 Pierre a renomé son nidoking : ' tamerosaurus '
+2023-05-10 16:28:47 Sacha a capturé un farfetchd sauvage.
+2023-05-10 16:29:18 Sacha a renomé son farfetchd : ' CanarLaqué '
+2023-05-10 17:59:08 Pierre a capturé un magikarp sauvage.

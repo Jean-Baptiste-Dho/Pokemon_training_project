@@ -12,7 +12,7 @@
                 <a class="border-{{ pokemon.pokemon.color }}"
                    href="{{ path('pokemon_update', {'id': pokemon.id}) }}">Modifier</a>
                 <a class="border-{{ pokemon.pokemon.color }}"
-                   href="{{ path('pokemon_delete', {'id': pokemon.id}) }}">Supprimer</a>
+                   href="{{ path('pokemon_delete', {'id': pokemon.id}) }}">Relâcher</a>
             </div>
         {% elseif trade %}
             <div class="centered pokemon-card-{{ pokemon.pokemon.color }} p-5">
