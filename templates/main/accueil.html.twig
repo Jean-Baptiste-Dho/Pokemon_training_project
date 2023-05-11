@@ -20,8 +20,11 @@
                 <h2>Classement des meilleurs dresseurs :</h2>
                 <div class="section">
                     {% for place in podium %}
-                        <p><span class="med">N° {{ loop.index }} : {{ place[0].name }}</span>
-                            <br>avec {{ place.counter }} Pokémons.</p>
+                        <p>
+                            <span class="med">N° {{ loop.index }} : {{ place[0].name }}</span>
+                            <br>avec<br>
+                            <span class="med"> {{ place.counter }} Pokémons.</span>
+                        </p>
                     {% endfor %}
                 </div>
             </div>

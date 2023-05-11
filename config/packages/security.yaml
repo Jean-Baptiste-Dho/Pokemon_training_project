@@ -41,6 +41,7 @@ security:
     # require ROLE_ADMIN for /admin*
     - { path: ^/register, roles: PUBLIC_ACCESS }
     - { path: ^/login, roles: PUBLIC_ACCESS }
+    - { path: ^/testage, roles: PUBLIC_ACCESS }
     - { path: ^/, roles: ROLE_USER }
 
 
