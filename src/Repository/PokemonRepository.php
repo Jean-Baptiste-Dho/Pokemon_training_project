@@ -65,4 +65,13 @@ class PokemonRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('p')
             ->orderBy('p.pokedexId', 'asc');
     }
+
+    public function findLastNumber()
+    {
+        return $this->createQueryBuilder('p')
+            ->select('MAX(p.pokedexId)')
+            ->getQuery()
+            ->getSingleScalarResult();
+
+    }
 }

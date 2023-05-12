@@ -1,4 +1,5 @@
 Historique des logs d'ajout de pokemon :
+
 Pokémon saisie : Staros - Type :Eau
 Pokémon saisie : Grolem - Type : Roche
 Pokémon saisie : Gravalanche - Type : Roche
@@ -99,3 +100,4 @@ Pokemon saisie : test - Type : Plante
 2023-05-10 16:28:47 Sacha a capturé un farfetchd sauvage.
 2023-05-10 16:29:18 Sacha a renomé son farfetchd : ' CanarLaqué '
 2023-05-10 17:59:08 Pierre a capturé un magikarp sauvage.
+2023-05-12 12:10:23 Sacha a renomé son squirtle : ' Tortuflette '

@@ -16,7 +16,6 @@ class Pokemon
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Ignore]
     private ?int $id = null;
 
     #[ORM\Column(length: 150)]
@@ -25,6 +24,7 @@ class Pokemon
 
     #[ORM\Column]
     #[Groups("edit")]
+    #[ORM\GeneratedValue]
     private ?int $pokedexId = null;
 
     #[ORM\OneToMany(mappedBy: 'pokemon', targetEntity: CapturedPokemon::class, orphanRemoval: true)]
