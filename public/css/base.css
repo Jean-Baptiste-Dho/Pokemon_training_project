@@ -286,6 +286,11 @@ body {
     margin: auto;
 }
 
+.w40 {
+    width: 40%;
+    margin: auto;
+}
+
 .m-auto {
     margin: auto;
 }
@@ -315,4 +320,3 @@ th, td {
 .separator {
     height: 50px;
 }
-

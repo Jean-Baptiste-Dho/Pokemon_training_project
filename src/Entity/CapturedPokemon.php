@@ -6,6 +6,10 @@ use App\Interface\InstanceInterface;
 use App\Repository\CapturedPokemonRepository;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Serializer\Annotation\Ignore;
+use Symfony\Component\Serializer\Annotation\MaxDepth;
+use Symfony\Component\Serializer\Annotation\SerializedName;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: CapturedPokemonRepository::class)]
@@ -21,10 +25,12 @@ class CapturedPokemon implements InstanceInterface
 
     #[ORM\ManyToOne(inversedBy: 'pokemons')]
     #[ORM\JoinColumn(nullable: false)]
+    #[Ignore]
     private ?Dresseur $dresseur = null;
 
     #[ORM\ManyToOne(inversedBy: 'pokemons')]
     #[ORM\JoinColumn(nullable: false)]
+    #[Ignore]
     private ?Pokemon $pokemon = null;
 
     public function getId(): ?int
@@ -71,6 +77,18 @@ class CapturedPokemon implements InstanceInterface
         $this->pokemon = $pokemon;
 
         return $this;
+    }
+
+//    #[SerializedName("dresseur_id")]
+//    public function getDresseurId()
+//    {
+//        return $this->getDresseur()->getId();
+//    }
+
+    #[SerializedName("pokemon_id")]
+    public function getPokemonId()
+    {
+        return $this->getPokemon()->getId();
     }
 
     /*

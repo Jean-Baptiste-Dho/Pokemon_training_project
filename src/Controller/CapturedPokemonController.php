@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Dresseur;
 use App\Entity\CapturedPokemon;
-use App\Form\CapturedPokemonType;
+use App\Form\CapturedPokemonFormType;
 use App\Security\Voter\PokemonVoter;
 use App\Service\CallPokeApi;
 use Doctrine\ORM\EntityManagerInterface;
@@ -32,7 +32,7 @@ class CapturedPokemonController extends AbstractController
         $pokemon = new CapturedPokemon();
         $pokemon->setDresseur($this->getUser());
 
-        $form = $this->createForm(CapturedPokemonType::class, $pokemon);
+        $form = $this->createForm(CapturedPokemonFormType::class, $pokemon);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -60,7 +60,7 @@ class CapturedPokemonController extends AbstractController
         $pokemon = $entityManager->getRepository(CapturedPokemon::class)->find($id);
         $this->denyAccessUnlessGranted(PokemonVoter::UPDATE, $pokemon);
 
-        $form = $this->createForm(CapturedPokemonType::class, $pokemon);
+        $form = $this->createForm(CapturedPokemonFormType::class, $pokemon);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {

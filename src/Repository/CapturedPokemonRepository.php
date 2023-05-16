@@ -75,6 +75,11 @@ class CapturedPokemonRepository extends ServiceEntityRepository
             ->setParameter('dresseur', $dresseur);
     }
 
+    public function findMy(Dresseur $dresseur): array
+    {
+        return $this->findMyQB($dresseur)->getQuery()->getResult();
+    }
+
     public function findMyByTypeQB(Dresseur $dresseur, Pokemon $pokemon): QueryBuilder
     {
         return $this->createQueryBuilder('p')

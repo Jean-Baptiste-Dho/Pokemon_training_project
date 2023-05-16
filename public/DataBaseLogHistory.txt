@@ -101,3 +101,9 @@ Pokemon saisie : test - Type : Plante
 2023-05-10 16:29:18 Sacha a renomé son farfetchd : ' CanarLaqué '
 2023-05-10 17:59:08 Pierre a capturé un magikarp sauvage.
 2023-05-12 12:10:23 Sacha a renomé son squirtle : ' Tortuflette '
+2023-05-15 13:41:52 Sacha a renomé son psyduck : ' Gnéééééééééééé '
+2023-05-15 15:31:01 Sacha a capturé un Brouette sauvage.
+2023-05-15 15:36:01 Sacha a relaché son Brouette dans la nature.
+2023-05-15 15:39:14 Sacha a capturé un Brouette sauvage.
+2023-05-15 15:42:20 Sacha a relaché son Brouette dans la nature.
+2023-05-15 16:42:46 Sacha a renomé son snorlax : ' grota '
